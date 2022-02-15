@@ -7,6 +7,7 @@ package Facade;
 import Asteroid.Main.AsteroidGame;
 import Snail.SnailGame;
 import Snake.SnakeGame;
+import Tetris.Tetris;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,10 +23,11 @@ public class CheckFacade extends javax.swing.JFrame {
      */
     private AsteroidGame asteroidGame;
     private SnailGame snailGame;
-    SnakeGame snakeGame;
+    private SnakeGame snakeGame;
+    private Tetris tetris;
     public CheckFacade() {
         initComponents();
-        snailGame= new SnailGame(true);
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -63,6 +65,11 @@ public class CheckFacade extends javax.swing.JFrame {
 
         jBTetrisGame.setFont(new java.awt.Font("Dank Mono", 0, 18)); // NOI18N
         jBTetrisGame.setText("Tetris Game");
+        jBTetrisGame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBTetrisGameActionPerformed(evt);
+            }
+        });
 
         jBSnakeGame.setFont(new java.awt.Font("Dank Mono", 0, 18)); // NOI18N
         jBSnakeGame.setText("Snake Game");
@@ -115,6 +122,7 @@ public class CheckFacade extends javax.swing.JFrame {
     private void jBSnailGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSnailGameActionPerformed
         
        snailGame= new SnailGame(true);
+        
         try {
             snailGame.iniciarJuego();
         } catch (InterruptedException ex) {
@@ -122,7 +130,13 @@ public class CheckFacade extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(CheckFacade.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_jBSnailGameActionPerformed
+
+    private void jBTetrisGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTetrisGameActionPerformed
+        tetris= new Tetris();
+        tetris.setVisible(true);
+    }//GEN-LAST:event_jBTetrisGameActionPerformed
 
     /**
      * @param args the command line arguments
