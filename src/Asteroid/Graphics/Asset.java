@@ -42,24 +42,24 @@ public class Asset {
 	public static BufferedImage greyBtn;
     public static void init(){
         /* Ship texture */
-        player = Loader.ImageLoader("/Figure/Ships/player.png");
+        player = Loader.ImageLoader("/Asteroid/Figure/Ships/player.png");
         
         /* Movement effect texture */
-        speed= Loader.ImageLoader("/Figure/Effects/fire01.png");
+        speed= Loader.ImageLoader("/Asteroid/Figure/Effects/fire01.png");
         
         /* Laser texture */
-        greenLaser = Loader.ImageLoader("/Figure/Effects/laserGreen.png");
+        greenLaser = Loader.ImageLoader("/Asteroid/Figure/Effects/laserGreen.png");
         
         /* UFO texture */
-        ufo = Loader.ImageLoader("/Figure/Ships/ufo.png");
+        ufo = Loader.ImageLoader("/Asteroid/Figure/Ships/ufo.png");
         
         /*Life texture*/
-        life = Loader.ImageLoader("/Figure/Life/life.png");
+        life = Loader.ImageLoader("/Asteroid/Figure/Life/life.png");
         
         //fond texture
         
-        fontBig = Loader.loadFont("/Figure/Fonts/futureFont.ttf", 42);	
-	fontMed = Loader.loadFont("/Figure/Fonts/futureFont.ttf", 20);
+        fontBig = Loader.loadFont("/Asteroid/Figure/Fonts/futureFont.ttf", 42);	
+	fontMed = Loader.loadFont("/Asteroid/Figure/Fonts/futureFont.ttf", 20);
         
         
         /* Loads the meteors using a for bucle */
@@ -70,44 +70,44 @@ public class Asset {
         /* Big asteroids */
         for (x = 0; x < bigs.length; x++){
             bigs[x] = Loader.ImageLoader(
-                "/Figure/Asteroids/big" + (x + 1) +".png"
+                "/Asteroid/Figure/Asteroids/big" + (x + 1) +".png"
             );
         }
         
         /* Medium asteroids */
         for (x = 0; x < meds.length; x++){
             meds[x] = Loader.ImageLoader(
-                "/Figure/Asteroids/med" + (x + 1) +".png"
+                "/Asteroid/Figure/Asteroids/med" + (x + 1) +".png"
             );
         }
         
         /* Small asteroids */
         for (x = 0; x < smalls.length; x++){
             smalls[x] = Loader.ImageLoader(
-                "/Figure/Asteroids/small" + (x + 1) +".png"
+                "/Asteroid/Figure/Asteroids/small" + (x + 1) +".png"
             );
         }
         
         /* Tiny asteroids */
         for (x = 0; x < tinies.length; x++){
             tinies[x] = Loader.ImageLoader(
-                "/Figure/Asteroids/tiny" + (x + 1) +".png"
+                "/Asteroid/Figure/Asteroids/tiny" + (x + 1) +".png"
             );
         }
         
         /* Explosion */
         for (x = 0; x < explosions.length; x++){
             explosions[x] = Loader.ImageLoader(
-                "/Figure/Explosion/explosion" + x + ".png"
+                "/Asteroid/Figure/Explosion/explosion" + x + ".png"
             );
         }
         for (x = 0; x < numbers.length; x++) {
             numbers[x]= Loader.ImageLoader(
-                    "/Figure/Numbers/" + x + ".png"
+                    "/Asteroid/Figure/Numbers/" + x + ".png"
             ); 
         }
-        greyBtn = Loader.ImageLoader("/Figure/Button/blue_button.png");
-	blueBtn = Loader.ImageLoader("/Figure/Button/grey_button.png");
+        greyBtn = Loader.ImageLoader("/Asteroid/Figure/Button/blue_button.png");
+	blueBtn = Loader.ImageLoader("/Asteroid/Figure/Button/grey_button.png");
         
     }
 }
