@@ -1,5 +1,6 @@
 package Asteroid.Main;
 
+import Asteroid.State.MenuState;
 import Asteroid.Graphics.Asset;
 import Asteroid.Input.KeyBoard;
 import Asteroid.State.GameState;
@@ -72,8 +73,12 @@ public class AsteroidGame extends JFrame implements Runnable {
         setVisible(true);
     }
 
-    public void showWindow() {
-        /* Creates the window type object */
+//    public static void main(String[] args) {
+//        /* Creates the window type object */
+//        new AsteroidGame().start();
+//    }
+    
+    public void showWindow(){
         new AsteroidGame().start();
     }
     
