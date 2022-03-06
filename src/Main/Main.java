@@ -5,6 +5,7 @@
 package Main;
 
 import Facade.CheckFacade;
+import Login.JFLogIn;
 
 /**
  *
@@ -16,8 +17,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CheckFacade checkFacade= new CheckFacade();
-        checkFacade.setVisible(true);
+        JFLogIn jfLogin = new JFLogIn();
+        jfLogin.setVisible(true);
     }
     
 }

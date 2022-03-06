@@ -52,6 +52,7 @@ public class JFSignInUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -66,62 +67,81 @@ public class JFSignInUser extends javax.swing.JFrame {
         jPFReplyPassword = new javax.swing.JPasswordField();
         jBSignIn = new javax.swing.JButton();
         jBLogIn = new javax.swing.JButton();
+        jBExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Sign in"));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sign in", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("KenVector Future Thin", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asteroid/Figure/Login/Actualizar.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("KenVector Future Thin", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("First Name:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("KenVector Future Thin", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Last Name:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setFont(new java.awt.Font("KenVector Future Thin", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("ID:");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("KenVector Future Thin", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Reply Password:");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setFont(new java.awt.Font("KenVector Future Thin", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Password:");
 
+        jTFFirstName.setBackground(new java.awt.Color(0, 0, 0));
+        jTFFirstName.setFont(new java.awt.Font("KenVector Future Thin", 0, 12)); // NOI18N
+        jTFFirstName.setForeground(new java.awt.Color(255, 255, 255));
         jTFFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFFirstNameActionPerformed(evt);
             }
         });
 
+        jTFLastName.setBackground(new java.awt.Color(0, 0, 0));
+        jTFLastName.setFont(new java.awt.Font("KenVector Future Thin", 0, 12)); // NOI18N
+        jTFLastName.setForeground(new java.awt.Color(255, 255, 255));
         jTFLastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFLastNameActionPerformed(evt);
             }
         });
 
+        jTFId.setBackground(new java.awt.Color(0, 0, 0));
+        jTFId.setFont(new java.awt.Font("KenVector Future Thin", 0, 12)); // NOI18N
+        jTFId.setForeground(new java.awt.Color(255, 255, 255));
         jTFId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFIdActionPerformed(evt);
             }
         });
 
+        jPFPassword.setBackground(new java.awt.Color(0, 0, 0));
+        jPFPassword.setFont(new java.awt.Font("KenVector Future Thin", 0, 12)); // NOI18N
+        jPFPassword.setForeground(new java.awt.Color(255, 255, 255));
         jPFPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPFPasswordActionPerformed(evt);
             }
         });
 
+        jPFReplyPassword.setBackground(new java.awt.Color(0, 0, 0));
+        jPFReplyPassword.setFont(new java.awt.Font("KenVector Future Thin", 0, 12)); // NOI18N
+        jPFReplyPassword.setForeground(new java.awt.Color(255, 255, 255));
         jPFReplyPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPFReplyPasswordActionPerformed(evt);
@@ -133,7 +153,7 @@ public class JFSignInUser extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(121, 121, 121))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -148,10 +168,10 @@ public class JFSignInUser extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTFFirstName)
                     .addComponent(jTFLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                    .addComponent(jTFId, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(jTFId)
                     .addComponent(jPFPassword)
                     .addComponent(jPFReplyPassword))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,6 +201,9 @@ public class JFSignInUser extends javax.swing.JFrame {
                 .addGap(80, 80, 80))
         );
 
+        jBSignIn.setBackground(new java.awt.Color(53, 186, 243));
+        jBSignIn.setFont(new java.awt.Font("KenVector Future Thin", 0, 12)); // NOI18N
+        jBSignIn.setForeground(new java.awt.Color(0, 0, 0));
         jBSignIn.setText("Sign in");
         jBSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +211,9 @@ public class JFSignInUser extends javax.swing.JFrame {
             }
         });
 
+        jBLogIn.setBackground(new java.awt.Color(53, 186, 243));
+        jBLogIn.setFont(new java.awt.Font("KenVector Future Thin", 0, 12)); // NOI18N
+        jBLogIn.setForeground(new java.awt.Color(0, 0, 0));
         jBLogIn.setText("Log in");
         jBLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,31 +221,59 @@ public class JFSignInUser extends javax.swing.JFrame {
             }
         });
 
+        jBExit.setBackground(new java.awt.Color(255, 0, 0));
+        jBExit.setFont(new java.awt.Font("KenVector Future Thin", 0, 12)); // NOI18N
+        jBExit.setForeground(new java.awt.Color(0, 0, 0));
+        jBExit.setText("EXIt");
+        jBExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBExit)
+                .addGap(18, 18, 18))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jBSignIn)
+                        .addGap(86, 86, 86)
+                        .addComponent(jBLogIn)))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jBExit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBSignIn)
+                    .addComponent(jBLogIn))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jBSignIn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBLogIn)
-                .addGap(72, 72, 72))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBSignIn)
-                    .addComponent(jBLogIn))
-                .addContainerGap(49, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -258,8 +312,8 @@ public class JFSignInUser extends javax.swing.JFrame {
 
                     if (isFound == false) {
 
-                        dataList.add(new User(this.jTFFirstName.getText(),
-                                this.jTFLastName.getText(),
+                        dataList.add(new User(this.jTFFirstName.getText().toUpperCase(),
+                                this.jTFLastName.getText().toUpperCase(),
                                 this.jTFId.getText(),
                                 this.jPFPassword.getText(),
                                 0, // Score
@@ -311,6 +365,10 @@ public class JFSignInUser extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPFReplyPasswordActionPerformed
 
+    private void jBExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jBExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -348,6 +406,7 @@ public class JFSignInUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBExit;
     private javax.swing.JButton jBLogIn;
     private javax.swing.JButton jBSignIn;
     private javax.swing.JLabel jLabel1;
@@ -359,6 +418,7 @@ public class JFSignInUser extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPFPassword;
     private javax.swing.JPasswordField jPFReplyPassword;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTFFirstName;
     private javax.swing.JTextField jTFId;
     private javax.swing.JTextField jTFLastName;

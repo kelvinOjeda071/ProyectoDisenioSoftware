@@ -13,6 +13,7 @@ import Asteroid.GameObjects.Constant;
 import Asteroid.Input.MouseInput;
 import Asteroid.State.State;
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 public class AsteroidGame extends JFrame implements Runnable {
     /* Attributes */
@@ -40,8 +41,8 @@ public class AsteroidGame extends JFrame implements Runnable {
     public AsteroidGame() {
         /* Attributes */
         
-        /* AsteroidGame Title */
-        setTitle("Atari Asteroids");
+        /* AsteroidGame Undecorated to not show the title in the screen*/
+        this.setUndecorated(true);
         
         /* AsteroidGame attributes */
         setSize(Constant.WIDTH, Constant.HEIGHT);
@@ -73,13 +74,11 @@ public class AsteroidGame extends JFrame implements Runnable {
         setVisible(true);
     }
 
-//    public static void main(String[] args) {
-//        /* Creates the window type object */
-//        new AsteroidGame().start();
-//    }
     
     public void showWindow(){
+        
         new AsteroidGame().start();
+        this.setResizable(false);
     }
     
     /* Methods */
