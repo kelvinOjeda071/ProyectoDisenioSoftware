@@ -16,9 +16,9 @@ import java.awt.event.KeyListener;
  * @author User
  */
 public class Teclado {
-    private Caracol caracol;
+    private Snail caracol;
 
-    public Teclado(Caracol caracol) {
+    public Teclado(Snail caracol) {
         this.caracol = caracol;
     }
     

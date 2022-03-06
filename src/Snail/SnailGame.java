@@ -56,7 +56,7 @@ public class SnailGame extends JFrame{
 
         this.setTitle("Snail");
        
-        Caracol caracol = new Caracol(posicionCaracol, 100, 100 );
+        Snail caracol = new Snail(posicionCaracol, 100, 100 );
         Obstaculo plataforma1 = new Obstaculo(0, posicionPlataforma1, 400, 50);
         Obstaculo plataforma2 = new Obstaculo(0, posicionPlataforma2, 300, 50);
 

@@ -5,13 +5,13 @@ import static com.sun.java.accessibility.util.AWTEventMonitor.addKeyListener;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import Input.Keyboard;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
  *
  * @author User
  */
-public class Caracol extends ElementoDeJuego {
+public class Snail extends ElementoDeJuego {
 
     private final ImageIcon imagen;
     int xFinal = 1;
@@ -48,7 +48,7 @@ public class Caracol extends ElementoDeJuego {
     
 
     
-    public Caracol(Posicion posicion, int ancho, int largo) throws IOException {
+    public Snail(Posicion posicion, int ancho, int largo) throws IOException {
         super(posicion, ancho, largo);
         this.posicion.x = 1;
         this.posicion.y=1;
@@ -77,16 +77,33 @@ public class Caracol extends ElementoDeJuego {
     @Override
     public void mover() {
                    
-        int x0 = this.posicion.getX();
-        int y0 = this.posicion.getY();
+        int x0 = this.position.getX();
+        int y0 = this.position.getY();
         
-        if ((x0 + this.xFinal > 0) && (x0 + this.xFinal < 600)){
-            this.posicion.setX(x0 + this.xFinal); 
+        
+        if((0< y0) && (y0< 800)){
+        this.position.setY(y0 + this.speedY);
         }
         
-        if((y0 + this.yFinal > 0) && (y0 + this.yFinal < 500)){
-            this.posicion.setY(y0 + this.yFinal);
+        
+        
+        
+        if((x0>=0) && (x0<=1200)){
+        if(Keyboard.RIGHT)
+        {
+            
+            this.position.setX(x0 + this.speedX);
+            }
+            //this.position.setX(x0+2);
         }
+  
+        if((x0>=0) && (x0<=1200)){
+        if(Keyboard.LEFT)
+        {
+            //girar();
+            this.position.setX(x0-this.speedX);
+            }
+        } 
    
     }
 
