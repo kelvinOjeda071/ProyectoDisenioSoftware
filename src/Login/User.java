@@ -19,29 +19,28 @@ public class User {
     private String lastName;
     private String id;
     private String password;
-    private String gameType;
-    private int score;
     private String date;
+    private int asteroidGameScore;
+    private int snailGameScore;
+    private int tetrisGameScore;
+    private int snakeGameScore;
+    private int currentActive;
+    
 
-    public User(String firstName, String lastName, String id, String gameType,String password, ScoreData scoreData ) {
+
+    public User(String firstName, String lastName, String id,String password, int scoreSignIn, int currentActive) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.id = id;
-        this.gameType = gameType;
         this.password = password;
-        this.score = scoreData.getScore();
-        this.date = scoreData.getDate();
-    }
-    public User(String firstName, String lastName, String id, String gameType,String password, int score) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.id = id;
-        this.gameType = gameType;
-        this.password = password;
-        this.score = score;
+        this.asteroidGameScore = scoreSignIn;
+        this.snailGameScore = scoreSignIn;
+        this.tetrisGameScore = scoreSignIn;
+        this.snakeGameScore = scoreSignIn;
         Date today = new Date(System.currentTimeMillis());
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         this.date = format.format(today);
+        this.currentActive= currentActive;
     }
 
     public User() {
@@ -82,14 +81,49 @@ public class User {
         this.password = password;
     }
 
-    public int getScore() {
-        return score;
+    public int getAsteroidGameScore() {
+        return asteroidGameScore;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setAsteroidGameScore(int asteroidGameScore) {
+        this.asteroidGameScore = asteroidGameScore;
     }
 
+    public int getSnailGameScore() {
+        return snailGameScore;
+    }
+
+    public void setSnailGameScore(int snailGameScore) {
+        this.snailGameScore = snailGameScore;
+    }
+
+    public int getTetrisGameScore() {
+        return tetrisGameScore;
+    }
+
+    public void setTetrisGameScore(int tetrisGameScore) {
+        this.tetrisGameScore = tetrisGameScore;
+    }
+
+    public int getSnakeGameScore() {
+        return snakeGameScore;
+    }
+
+    public void setSnakeGameScore(int snakeGameScore) {
+        this.snakeGameScore = snakeGameScore;
+    }
+
+    public int getCurrentActive() {
+        return currentActive;
+    }
+
+    public void setCurrentActive(int currentActive) {
+        this.currentActive = currentActive;
+    }
+    
+    
+    
+    
     public String getDate() {
         return date;
     }
@@ -98,19 +132,17 @@ public class User {
         this.date = date;
     }
 
-    public String getGameType() {
-        return gameType;
-    }
-
-    public void setGameType(String gameType) {
-        this.gameType = gameType;
-    }
     
-    public void logIn(){
+    public void addScore(ScoreData scoreData, String gameType){
         
     }
     
-    public void signIn(){
+    
+    public void logIn(JFLogInUser jfLogInUser){
+        
+    }
+    
+    public void signIn(JFSignInUser jFSignInUser){
       
     }
     

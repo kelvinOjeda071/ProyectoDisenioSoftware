@@ -27,7 +27,7 @@ public class JFSignInUser extends javax.swing.JFrame {
     private Pattern patName = Pattern.compile("[a-zA-ZñáéíóúÑÁÉÍÓÚ\\s]{1,25}");
     private Pattern patId = Pattern.compile("[0-9]{10}");
     private Pattern patPassword = Pattern.compile("^(?=.*[0-9])(?=.*[a-zñáéíóú])(?=.*[A-ZÑÁÉÍÓÚ]).{6,64}$");
-    JFLoginUser jfLoginUser= new JFLoginUser();
+    JFLogInUser jfLoginUser= new JFLogInUser();
     public JFSignInUser() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -235,11 +235,11 @@ public class JFSignInUser extends javax.swing.JFrame {
                 this.jPFReplyPassword.getText());
         boolean isFound = false;
         try {
-            ArrayList<User> dataList = JSONParser.readField();
+            
             if (matFirstName.matches() && matLastName.matches() && matId.matches()
                     && matPassword.matches() && matReplyPassword.matches()) {
                 if (this.jPFPassword.getText().equals(jPFReplyPassword.getText())) {
-
+                    ArrayList<User> dataList = JSONParser.readField();
                     int j = 0;
 
                     System.out.println(dataList.size());
@@ -261,9 +261,9 @@ public class JFSignInUser extends javax.swing.JFrame {
                         dataList.add(new User(this.jTFFirstName.getText(),
                                 this.jTFLastName.getText(),
                                 this.jTFId.getText(),
-                                "",
                                 this.jPFPassword.getText(),
-                                0
+                                0, // Score
+                                0  // Current Active
                         ));
 
                         JSONParser.writeFile(dataList);

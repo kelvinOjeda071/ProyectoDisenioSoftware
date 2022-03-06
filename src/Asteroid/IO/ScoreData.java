@@ -4,6 +4,8 @@
  */
 package Asteroid.IO;
 
+import Login.JFLogInUser;
+import Login.User;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,11 +15,12 @@ import java.util.Date;
  */
 public class ScoreData {
     
-    private String date;
     private int score;
+    private String date;
+    
     
     public ScoreData (int score){
-        this.score= score;
+        this.score = score;
         Date today = new Date(System.currentTimeMillis());
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         date = format.format(today);
@@ -27,7 +30,7 @@ public class ScoreData {
     public ScoreData(){
         
     }
-
+    
     public String getDate() {
         return date;
     }
@@ -43,6 +46,11 @@ public class ScoreData {
     public void setScore(int score) {
         this.score = score;
     }
+
+    
+
+    
+    
     
     
 }

@@ -19,6 +19,8 @@ import Asteroid.GameObjects.Ufo;
 import Asteroid.Graphics.Animation;
 import Asteroid.IO.JSONParser;
 import Asteroid.IO.ScoreData;
+import Login.JFLogInUser;
+import Login.User;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -55,7 +57,7 @@ public class GameState extends State{
     private Chronometer gameOverTimer;
     private boolean gameOver;
     private Chronometer ufoSpawner;
-
+    
     /* Constructor */
     public GameState() {
 
@@ -67,6 +69,11 @@ public class GameState extends State{
                 this);
         gameOverTimer = new Chronometer();
         gameOver= false;
+        
+        
+        
+       
+        
         
 
         /* Adds the player as a moving object */
@@ -240,14 +247,26 @@ public class GameState extends State{
             }
         }
         if(gameOver && !gameOverTimer.isRunning()){
-            
-//            try {
-//                ArrayList <ScoreData> dataList = JSONParser.readField();
-//                dataList.add( new ScoreData(score));
-//                JSONParser.writeFile(dataList);
-//            } catch (IOException ex) {
-//                Logger.getLogger(GameState.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+            boolean isFound= false;
+            // Save the new Score for the User Login
+            try {
+                ArrayList <User> dataList = JSONParser.readField();
+                int z = 0;
+                for ( int j = 0; j < dataList.size(); j++){
+                    if(dataList.get(j).getCurrentActive() == 1 ){
+                        if(dataList.get(j).getAsteroidGameScore() < 
+                                score){
+                                dataList.get(j).setAsteroidGameScore(score);
+                                JSONParser.writeFile(dataList);
+                        }
+                    }
+                        
+                }
+                
+                
+            } catch (IOException ex) {
+                Logger.getLogger(GameState.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             State.changeState(new MenuState());
         }

@@ -44,9 +44,12 @@ public class JSONParser {
              userData.setLastName(jsonObject.getString("lastName"));
              userData.setId(jsonObject.getString("id"));
              userData.setPassword(jsonObject.getString("password"));
-             userData.setGameType(jsonObject.getString("gameType"));
-             userData.setScore(jsonObject.getInt("score"));
+             userData.setAsteroidGameScore(jsonObject.getInt("asteroidGameScore"));
+             userData.setSnailGameScore(jsonObject.getInt("snailGameScore"));
+             userData.setTetrisGameScore(jsonObject.getInt("tetrisGameScore"));
+             userData.setSnakeGameScore(jsonObject.getInt("snakeGameScore"));
              userData.setDate(jsonObject.getString("date"));
+             userData.setCurrentActive(jsonObject.getInt("currentActive"));
              dataList.add(userData);
          }
          
@@ -69,10 +72,12 @@ public class JSONParser {
              jsonObject.put("lastName", user.getLastName());
              jsonObject.put("id", user.getId());
              jsonObject.put("password", user.getPassword());
-             jsonObject.put("gameType", user.getGameType());
-             jsonObject.put("score", user.getScore());
+             jsonObject.put("asteroidGameScore", user.getAsteroidGameScore());
+             jsonObject.put("snailGameScore", user.getSnailGameScore());
+             jsonObject.put("tetrisGameScore", user.getTetrisGameScore());
+             jsonObject.put("snakeGameScore", user.getSnakeGameScore());
              jsonObject.put("date", user.getDate());
-             
+             jsonObject.put("currentActive", user.getCurrentActive());
              jsonList.put(jsonObject);
          }
          // Create the buffer to write

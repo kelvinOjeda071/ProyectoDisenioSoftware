@@ -12,6 +12,7 @@ import Asteroid.IO.ScoreData;
 import Asteroid.Math.Vector2D;
 import Asteroid.UI.Action;
 import Asteroid.UI.Button;
+import Login.User;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.FileNotFoundException;
@@ -29,9 +30,9 @@ import java.util.logging.Logger;
 public class ScoreState extends State {
 
     private Button returnButton;
-    private PriorityQueue <ScoreData> highScores;
-    private Comparator <ScoreData> scoreComparator;
-    private ScoreData[] auxArrayScoreData;
+    private PriorityQueue <User> highScores;
+    private Comparator <User> scoreComparator;
+    private User[] auxArrayScoreDataUser;
     
     public ScoreState() {
         returnButton = new Button(
@@ -47,18 +48,29 @@ public class ScoreState extends State {
                     }
                 }
         );
-        scoreComparator = new Comparator<ScoreData>(){
+        scoreComparator = new Comparator<User>(){
             @Override
-            public int compare(ScoreData score1, ScoreData score2) {
-                return score1.getScore() < score2.getScore() ? -1 : 
-                        score1.getScore() > score2.getScore() ? 1: 
+            public int compare(User userScore1, User userScore2) {
+                return userScore1.getAsteroidGameScore() < userScore2.getAsteroidGameScore() ? -1 : 
+                        userScore1.getAsteroidGameScore() > userScore2.getAsteroidGameScore() ? 1: 
                         0;
             }
         };
         
-        highScores = new  PriorityQueue<ScoreData> (10, scoreComparator);
+        highScores = new  PriorityQueue<User> (10, scoreComparator);
         
         
+        try {
+            ArrayList<User> dataList = JSONParser.readField();
+            for (int i = 0; i < dataList.size(); i++) {
+                if (dataList.get(i).getAsteroidGameScore() != 0) {
+                    highScores.add(dataList.get(i));
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+
        
                 
         
@@ -74,18 +86,28 @@ public class ScoreState extends State {
     public void draw(Graphics g) {
         returnButton.draw(g);
         
-        auxArrayScoreData = highScores.toArray(new ScoreData[highScores.size()]);
-        Arrays.sort(auxArrayScoreData,scoreComparator);
+        auxArrayScoreDataUser = highScores.toArray(new User[highScores.size()]);
+        Arrays.sort(auxArrayScoreDataUser,scoreComparator);
         
+        Vector2D namePos = new Vector2D(
+                 Constant.WIDTH/2 - 250,
+                50
+        );
         
         Vector2D scorePos = new Vector2D(
-                Constant.WIDTH/2 - 200,
-                100 
+                Constant.WIDTH/2,
+                50 
         );
         Vector2D datePos = new Vector2D(
-                Constant.WIDTH/2 + 200,
-                100
+                Constant.WIDTH/2 + 250,
+                50
         );
+        Text.drawText(g,
+                "NAME",
+                namePos,
+                true,
+                Color.WHITE,
+                Asset.fontMed);
         Text.drawText(g,
                 Constant.SCORE,
                 scorePos,
@@ -98,24 +120,33 @@ public class ScoreState extends State {
                 true,
                 Color.WHITE,
                 Asset.fontMed);
-        scorePos.setY(scorePos.getY() + 40);
-        datePos.setY(datePos.getY() +40);
-        for ( int i = auxArrayScoreData.length-1; i > -1; i-- ){
-            ScoreData auxScoreData = auxArrayScoreData[i];
+        namePos.setY(namePos.getY() + 30);
+        scorePos.setY(scorePos.getY() + 30);
+        datePos.setY(datePos.getY() + 30);
+        
+        for ( int i = auxArrayScoreDataUser.length-1; i > -1; i-- ){
+            User auxScoreDataUser = auxArrayScoreDataUser[i];
             Text.drawText(g,
-                Integer.toString(auxScoreData.getScore()),
+                auxScoreDataUser.getFirstName() +" "+ auxScoreDataUser.getLastName(),
+                namePos,
+                true,
+                Color.WHITE,
+                Asset.fontMed);
+            Text.drawText(g,
+                Integer.toString( auxScoreDataUser.getAsteroidGameScore()),
                 scorePos,
                 true,
                 Color.WHITE,
                 Asset.fontMed);
             Text.drawText(g,
-                auxScoreData.getDate(),
+                auxScoreDataUser.getDate(),
                 datePos,
                 true,
                 Color.WHITE,
                 Asset.fontMed);
-            scorePos.setY(scorePos.getY() + 40);
-            datePos.setY(datePos.getY() +40);
+            namePos.setY(namePos.getY() + 25);
+            scorePos.setY(scorePos.getY() + 25);
+            datePos.setY(datePos.getY() + 25);
         }
     }
     
