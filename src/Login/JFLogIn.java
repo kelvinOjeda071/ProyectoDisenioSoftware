@@ -18,13 +18,13 @@ import javax.swing.JOptionPane;
  *
  * @author KelvinOjeda
  */
-public class JFLogInUser extends javax.swing.JFrame {
+public class JFLogIn extends javax.swing.JFrame {
 
     /**
-     * Creates new form JFLogInUser
+     * Creates new form JFLogIn
      */
     private User logInUser;
-    public JFLogInUser() {
+    public JFLogIn() {
         initComponents();
         this.setLocationRelativeTo(null);
         logInUser = new User();
@@ -185,7 +185,7 @@ public class JFLogInUser extends javax.swing.JFrame {
                                 try {
                                     JSONParser.writeFile(dataList);
                                 } catch (IOException ex) {
-                                    Logger.getLogger(JFLogInUser.class.getName()).log(Level.SEVERE, null, ex);
+                                    Logger.getLogger(JFLogIn.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                                 isFound = true;
                                 new CheckFacade().setVisible(true);
@@ -212,7 +212,7 @@ public class JFLogInUser extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El usuario aún no existe");
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(JFLogInUser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFLogIn.class.getName()).log(Level.SEVERE, null, ex);
         }
             
             
@@ -242,21 +242,27 @@ public class JFLogInUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFLogInUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFLogInUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFLogInUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFLogInUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFLogInUser().setVisible(true);
+                new JFLogIn().setVisible(true);
             }
         });
     }

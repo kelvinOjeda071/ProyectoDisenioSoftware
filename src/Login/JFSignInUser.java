@@ -27,7 +27,7 @@ public class JFSignInUser extends javax.swing.JFrame {
     private Pattern patName = Pattern.compile("[a-zA-ZñáéíóúÑÁÉÍÓÚ\\s]{1,25}");
     private Pattern patId = Pattern.compile("[0-9]{10}");
     private Pattern patPassword = Pattern.compile("^(?=.*[0-9])(?=.*[a-zñáéíóú])(?=.*[A-ZÑÁÉÍÓÚ]).{6,64}$");
-    JFLogInUser jfLoginUser= new JFLogInUser();
+    JFLogIn jfLoginUser= new JFLogIn();
     public JFSignInUser() {
         initComponents();
         this.setLocationRelativeTo(null);

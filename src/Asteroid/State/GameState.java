@@ -19,7 +19,7 @@ import Asteroid.GameObjects.Ufo;
 import Asteroid.Graphics.Animation;
 import Asteroid.IO.JSONParser;
 import Asteroid.IO.ScoreData;
-import Login.JFLogInUser;
+import Login.JFLogIn;
 import Login.User;
 import java.awt.Color;
 import java.awt.Graphics2D;
