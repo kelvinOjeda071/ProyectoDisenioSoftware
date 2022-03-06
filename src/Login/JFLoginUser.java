@@ -5,8 +5,10 @@
 package Login;
 
 import Asteroid.IO.JSONParser;
+import Asteroid.IO.ScoreData;
 import Facade.CheckFacade;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,21 +18,23 @@ import javax.swing.JOptionPane;
  *
  * @author KelvinOjeda
  */
-public class JFLoginUser extends javax.swing.JFrame {
+public class JFLogInUser extends javax.swing.JFrame {
 
     /**
-     * Creates new form JFLoginUser
+     * Creates new form JFLogInUser
      */
-    
-    public JFLoginUser() {
+    private User logInUser;
+    public JFLogInUser() {
         initComponents();
         this.setLocationRelativeTo(null);
-        //JFSignInUser jfSignIn = new JFSignInUser();
+        logInUser = new User();
     }
     public void setEmptyLabels(){
         this.jTFId.setText("");
         this.jTFPassword.setText("");
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,40 +167,52 @@ public class JFLoginUser extends javax.swing.JFrame {
         } else {
         try {
             ArrayList <User> dataList = JSONParser.readField();
-            System.out.println(dataList.size());
+            
+            boolean isFound = false;
             int j = 0;
             if (dataList.size() > 0){
                 for ( int i = 0; i < dataList.size(); i++){
-                    
-                    if (this.jTFId.getText().equals(dataList.get(i).getId())){
-                        j++;
-                        if (j==1){
-                            if(this.jTFPassword.getText().equals(
-                                    dataList.get(i).getPassword())){
+                    System.out.println(dataList.get(i).getId()+" "+dataList.get(i).getPassword());
+                    if (id.equals(dataList.get(i).getId())) {
+                        System.out.println(jTFPassword.getText());
+                        
+                        if (password.equals(
+                                dataList.get(i).getPassword())) {
+                            j++;
+                            if (j == 1 && isFound == false) {
+                                this.logInUser = dataList.get(i);
+                                dataList.get(i).setCurrentActive(1);
+                                try {
+                                    JSONParser.writeFile(dataList);
+                                } catch (IOException ex) {
+                                    Logger.getLogger(JFLogInUser.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                isFound = true;
                                 new CheckFacade().setVisible(true);
                                 this.setVisible(false);
-                            }else{
-                                JOptionPane.showMessageDialog(null, "El usuario "
-                                        + "o la contraseña están mal escritos");
-                                setEmptyLabels();
+                                i = dataList.size();
+                                
                             }
-                            j = dataList.size();
-                            i=j;
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El usuario "
+                                    + "o la contraseña están mal escritos");
+                            setEmptyLabels();
+
                         }
-                        
-                        
-                        
-                    }else{
-                         JOptionPane.showMessageDialog(null, "1. El usuario "
-                                 + "aún no existe");
-                         setEmptyLabels();
+
                     }
+                        
+                    
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "2. El usuario aún no existe");
+                JOptionPane.showMessageDialog(null, "El usuario aún no existe");
+            }
+            
+            if( isFound == false){
+                JOptionPane.showMessageDialog(null, "El usuario aún no existe");
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(JFLoginUser.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(JFLogInUser.class.getName()).log(Level.SEVERE, null, ex);
         }
             
             
@@ -226,20 +242,21 @@ public class JFLoginUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFLoginUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLogInUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFLoginUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLogInUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFLoginUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLogInUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFLoginUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFLogInUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFLoginUser().setVisible(true);
+                new JFLogInUser().setVisible(true);
             }
         });
     }
