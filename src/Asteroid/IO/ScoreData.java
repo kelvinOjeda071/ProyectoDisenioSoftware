@@ -12,6 +12,7 @@ import java.util.Date;
  * @author KelvinOjeda
  */
 public class ScoreData {
+    
     private String date;
     private int score;
     
