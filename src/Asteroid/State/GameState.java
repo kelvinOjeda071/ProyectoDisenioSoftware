@@ -241,13 +241,13 @@ public class GameState extends State{
         }
         if(gameOver && !gameOverTimer.isRunning()){
             
-            try {
-                ArrayList <ScoreData> dataList = JSONParser.readField();
-                dataList.add( new ScoreData(score));
-                JSONParser.writeFile(dataList);
-            } catch (IOException ex) {
-                Logger.getLogger(GameState.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+//                ArrayList <ScoreData> dataList = JSONParser.readField();
+//                dataList.add( new ScoreData(score));
+//                JSONParser.writeFile(dataList);
+//            } catch (IOException ex) {
+//                Logger.getLogger(GameState.class.getName()).log(Level.SEVERE, null, ex);
+//            }
 
             State.changeState(new MenuState());
         }

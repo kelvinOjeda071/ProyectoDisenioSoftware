@@ -4,6 +4,12 @@
  */
 package Login;
 
+import Asteroid.IO.JSONParser;
+import Facade.CheckFacade;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,9 +21,15 @@ public class JFLoginUser extends javax.swing.JFrame {
     /**
      * Creates new form JFLoginUser
      */
+    
     public JFLoginUser() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //JFSignInUser jfSignIn = new JFSignInUser();
+    }
+    public void setEmptyLabels(){
+        this.jTFId.setText("");
+        this.jTFPassword.setText("");
     }
 
     /**
@@ -34,21 +46,22 @@ public class JFLoginUser extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTFId = new javax.swing.JTextField();
-        jTFPassword = new javax.swing.JTextField();
-        jBSingIn = new javax.swing.JButton();
+        jTFPassword = new javax.swing.JPasswordField();
+        jBSignIn = new javax.swing.JButton();
         jBLogIn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Login"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Log In"));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asteroid/Figure/Login/login.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Identification:");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("ID:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -88,13 +101,18 @@ public class JFLoginUser extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTFId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTFPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        jBSingIn.setText("Sing in");
+        jBSignIn.setText("Sign in");
+        jBSignIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSignInActionPerformed(evt);
+            }
+        });
 
         jBLogIn.setText("Log in");
         jBLogIn.addActionListener(new java.awt.event.ActionListener() {
@@ -110,10 +128,10 @@ public class JFLoginUser extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(65, 65, 65)
-                .addComponent(jBSingIn)
+                .addComponent(jBSignIn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBLogIn)
                 .addGap(89, 89, 89))
@@ -123,9 +141,9 @@ public class JFLoginUser extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBSingIn)
+                    .addComponent(jBSignIn)
                     .addComponent(jBLogIn))
                 .addGap(22, 22, 22))
         );
@@ -143,9 +161,53 @@ public class JFLoginUser extends javax.swing.JFrame {
         if (password.equals("") || id.equals("")) {
             JOptionPane.showMessageDialog(null, "Ingrese campos obligatorios");
         } else {
-            ArrayList <ScoreData>
+        try {
+            ArrayList <User> dataList = JSONParser.readField();
+            System.out.println(dataList.size());
+            int j = 0;
+            if (dataList.size() > 0){
+                for ( int i = 0; i < dataList.size(); i++){
+                    
+                    if (this.jTFId.getText().equals(dataList.get(i).getId())){
+                        j++;
+                        if (j==1){
+                            if(this.jTFPassword.getText().equals(
+                                    dataList.get(i).getPassword())){
+                                new CheckFacade().setVisible(true);
+                                this.setVisible(false);
+                            }else{
+                                JOptionPane.showMessageDialog(null, "El usuario "
+                                        + "o la contraseña están mal escritos");
+                                setEmptyLabels();
+                            }
+                            j = dataList.size();
+                            i=j;
+                        }
+                        
+                        
+                        
+                    }else{
+                         JOptionPane.showMessageDialog(null, "1. El usuario "
+                                 + "aún no existe");
+                         setEmptyLabels();
+                    }
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "2. El usuario aún no existe");
+            }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(JFLoginUser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
         }
     }//GEN-LAST:event_jBLogInActionPerformed
+
+    private void jBSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSignInActionPerformed
+       //this.jfSignIn.setVisible(true);
+       new JFSignInUser().setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_jBSignInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,12 +246,12 @@ public class JFLoginUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBLogIn;
-    private javax.swing.JButton jBSingIn;
+    private javax.swing.JButton jBSignIn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTFId;
-    private javax.swing.JTextField jTFPassword;
+    private javax.swing.JPasswordField jTFPassword;
     // End of variables declaration//GEN-END:variables
 }

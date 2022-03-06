@@ -59,17 +59,7 @@ public class ScoreState extends State {
         highScores = new  PriorityQueue<ScoreData> (10, scoreComparator);
         
         
-        try {
-            ArrayList <ScoreData> dataList = JSONParser.readField();
-            for(ScoreData scoreData: dataList){
-                highScores.add(scoreData);
-            }
-             while (highScores.size() > 10){
-                 highScores.poll();
-             }
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
+       
                 
         
     }

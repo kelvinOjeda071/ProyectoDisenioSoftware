@@ -5,6 +5,7 @@
 package Asteroid.IO;
 
 import Asteroid.GameObjects.Constant;
+import Login.User;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,9 +23,9 @@ import org.json.JSONTokener;
  * @author KelvinOjeda
  */
 public class JSONParser {
-    public static ArrayList<ScoreData> readField() throws FileNotFoundException{
+    public static ArrayList<User> readField() throws FileNotFoundException{
         // ScoreData is the array where we can read the core from file
-        ArrayList <ScoreData> dataList = new ArrayList<ScoreData>();
+        ArrayList <User> dataList = new ArrayList<User>();
         
         File file = new File(Constant.SCORE_PATH);
         // If the file is empty or is not exist return the dataList
@@ -38,10 +39,15 @@ public class JSONParser {
          
          for (int i = 0; i < jsonList.length(); i++){
              JSONObject jsonObject = (JSONObject) jsonList.get(i);
-             ScoreData scoreData = new ScoreData();
-             scoreData.setScore(jsonObject.getInt("score"));
-             scoreData.setDate(jsonObject.getString("date"));
-             dataList.add(scoreData);
+             User userData = new User();
+             userData.setFirstName(jsonObject.getString("fistName"));
+             userData.setLastName(jsonObject.getString("lastName"));
+             userData.setId(jsonObject.getString("id"));
+             userData.setPassword(jsonObject.getString("password"));
+             userData.setGameType(jsonObject.getString("gameType"));
+             userData.setScore(jsonObject.getInt("score"));
+             userData.setDate(jsonObject.getString("date"));
+             dataList.add(userData);
          }
          
          return dataList;
@@ -49,7 +55,7 @@ public class JSONParser {
          
     }
     
-    public static void writeFile(ArrayList<ScoreData> dataList) throws IOException{
+    public static void writeFile(ArrayList<User> dataList) throws IOException{
         File outputFile = new File(Constant.SCORE_PATH);
         // Create the parent directory
         outputFile.getParentFile().mkdir();
@@ -57,10 +63,15 @@ public class JSONParser {
         outputFile.createNewFile();
         
         JSONArray jsonList = new JSONArray();
-         for (ScoreData scoreData : dataList){
+         for (User user : dataList){
              JSONObject jsonObject = new JSONObject();
-             jsonObject.put("score", scoreData.getScore());
-             jsonObject.put("date", scoreData.getDate());
+             jsonObject.put("fistName", user.getFirstName());
+             jsonObject.put("lastName", user.getLastName());
+             jsonObject.put("id", user.getId());
+             jsonObject.put("password", user.getPassword());
+             jsonObject.put("gameType", user.getGameType());
+             jsonObject.put("score", user.getScore());
+             jsonObject.put("date", user.getDate());
              
              jsonList.put(jsonObject);
          }
