@@ -5,20 +5,18 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class Tablero{
+public class Tablero {
     JButton[][] matrix;
     JPanel tablero;
     int dimx = 10;
     int dimy = 20;
 
-    public Tablero(JButton[][] matrix, JPanel tablero, int dimx, int dimy) {
+    public Tablero(JButton[][] matrix, JPanel tablero) {
         this.matrix = matrix;
         this.tablero = tablero;
-        this.dimx = dimx;
-        this.dimy = dimy;
     }
     
-    public JButton[][] dibujar(){
+    JButton[][] dibujar(){
         JButton[][] matriz = new JButton[dimx][dimy];
         for (int x = 0; x < dimx; x++) {
             for (int y = 0; y < dimy; y++) {

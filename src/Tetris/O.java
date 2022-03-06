@@ -11,9 +11,11 @@ public class O extends Figura {
     JButton b3;
     JButton b4;
     int x, y;
+    JButton[][] matriz;
 
     public O(JButton[][] matriz) {
         super(matriz);
+        //this.matriz = matriz;
         estaDetenida = false;
         b1 = matriz[dimx / 2][0];
         b2 = matriz[dimx / 2][1];
@@ -21,17 +23,24 @@ public class O extends Figura {
         b4 = matriz[dimx / 2 + 1][1];
         x = dimx / 2;
         y = 1;
+        
     }
     
-    @Override
     public void dibujar(){
+        estaDetenida = false;
+        /*b1 = matriz[dimx / 2][0];
+        b2 = matriz[dimx / 2][1];
+        b3 = matriz[dimx / 2 + 1][0];
+        b4 = matriz[dimx / 2 + 1][1];
+        x = dimx / 2;
+        y = 1;*/
+        
         b1.setBackground(Color.BLUE);
         b2.setBackground(Color.BLUE);
         b3.setBackground(Color.BLUE);
         b4.setBackground(Color.BLUE);
     }
     
-    @Override
     public void bajar() {
 
         if (estaDetenida) {
@@ -71,7 +80,6 @@ public class O extends Figura {
 
     }
 
-    @Override
     public void moverDerecha() {
         if (estaDetenida) {
             return;
@@ -102,7 +110,6 @@ public class O extends Figura {
 
     }
 
-    @Override
     public void moverIzquierda() {
         if (estaDetenida) {
             return;
@@ -131,7 +138,6 @@ public class O extends Figura {
 
     }
 
-    @Override
     public void rotar() {;
     }
 

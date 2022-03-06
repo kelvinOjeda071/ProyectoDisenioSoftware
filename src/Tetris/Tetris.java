@@ -6,6 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.Color;
 import java.io.IOException;
+import static java.lang.Math.random;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,46 +16,48 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 
 public class Tetris extends javax.swing.JFrame {
-    
-    Tablero nuevoTablero;
-    JButton[][] matrixes;
-    Figura figura;
-    Timer paso;
-    TimerTask baja;
-    Clip clip;
-    int contador = 0;
-    /*
-    Random random = new Random();
-    int dimx = 10;
-    int dimy = 20;
-    int cont = 0;
-    AudioInputStream audio2;*/
-    
-    Verificador verificador;
 
+    JButton[][] matrixes;
+    JButton[][] matrixes1;
+    Timer paso;
+    Random random = new Random();
+    /*TimerTask baja;
+    Figura figura;
+    
+    int dimx = 10;
+    int dimy = 20;*/
+    Figura figura1;
+    int cont = 0;
+    //Clip clip;
+    //AudioInputStream audio2;
+    Verificador ver= new Verificador();
     public Tetris() {
         initComponents();
         
-        nuevoTablero = new Tablero(matrixes, Tablero, 10, 20);
+        int r = (int) (random.nextFloat() * 6);
+        Tablero nuevoTablero = new Tablero(matrixes, Tablero);
         JButton[][] matrix = nuevoTablero.dibujar();
         
-        verificador = new Verificador(figura, contador);
+        Tabla nuevaTabla = new Tabla(matrixes1, Tabla1);
+        JButton[][] matrix1 = nuevaTabla.dibujar();
         
-        figura = new L(matrix);
-        figura.dibujar();
-        figura.bajar();
-
-        paso = new Timer();
-        baja = new TimerTask() {
-            @Override
-            public void run() {
-                clip.start();
-                verificador.verificar(matrix, paso);
-
-            }
-        };
-        paso.schedule(baja, 0, 500);
+        ver.Verificador(matrix, matrix1);
+        
         this.setLocationRelativeTo(null);
+    }
+    public static void dib(int ran){
+        /*JButton b = new JButton();
+        JButton c = new JButton();
+        JButton d = new JButton();
+        JButton e = new JButton();
+        b.setBounds(5, 5, 30, 30);
+        Tabla1.add(b);
+        c.setBounds(30, 5, 30, 30);
+        Tabla1.add(c);
+        d.setBounds(55, 5, 30, 30);
+        Tabla1.add(d);
+        e.setBounds(5, 30, 30, 30);
+        Tabla1.add(e);*/
     }
 
     /**
@@ -73,6 +76,7 @@ public class Tetris extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        Tabla1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(200, 640));
@@ -115,9 +119,9 @@ public class Tetris extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
+                        .addGap(174, 174, 174)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(402, 402, 402)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -139,131 +143,44 @@ public class Tetris extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, -1));
+
+        Tabla1.setBackground(new java.awt.Color(153, 0, 153));
+
+        javax.swing.GroupLayout Tabla1Layout = new javax.swing.GroupLayout(Tabla1);
+        Tabla1.setLayout(Tabla1Layout);
+        Tabla1Layout.setHorizontalGroup(
+            Tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        Tabla1Layout.setVerticalGroup(
+            Tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(Tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, 160));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnComenzarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnComenzarKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_S) {
-            figura.bajar();
-        }
-        if (evt.getKeyCode() == KeyEvent.VK_D) {
-            figura.moverDerecha();
-        }
-        if (evt.getKeyCode() == KeyEvent.VK_A) {
-            figura.moverIzquierda();
-        }
-        if (evt.getKeyCode() == KeyEvent.VK_W) {
-            figura.rotar();
-        }
+        ver.movimientoControles(evt);
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnComenzarKeyPressed
 
     private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
         paso.cancel();
         Tablero.removeAll();
+        cont = 0;
         
-        Tablero nuevoTablero = new Tablero(matrixes, Tablero, 10, 20);
+        Tablero nuevoTablero = new Tablero(matrixes, Tablero);
         JButton[][] matrix = nuevoTablero.dibujar();
-
-        figura = new S(matrix);
-        figura.bajar();
-
-        paso = new Timer();
         
-        System.out.println("ANTES");
-        System.out.println(contador);
-
-        baja = new TimerTask() {
-            @Override
-            public void run() {
-                contador = verificador.perder(contador, matrix, paso);
-                //System.out.println("DESPUES");
-                //System.out.println(contador);
-                verificador.estaCompleto(matrix);
-                //System.out.println("pasa");
-                verificador.generarFigura(contador, figura, matrix);
-                //System.out.println("Esta bajando");
-                verificador.rellenar(matrix);
-                /*for (int x = 0; x < dimx; x++) {
-                    if (!matrix[x][0].getBackground().equals(new Color(240, 240, 240))) {
-                        cont++;
-                    }
-                }
-
-                if (cont > 5) {
-                    javax.swing.JOptionPane.showMessageDialog(null, "Has perdido\n"
-                            + "Fin.\n", "Fin del juego", javax.swing.JOptionPane.OK_OPTION);
-                    paso.cancel();
-                    cont = 0;
-                    return;
-                }
-
-                for (int y = 0; y < dimy; y++) {
-                    boolean estaCompleto = true;
-                    for (int x = 0; x < dimx; x++) {
-                        if (matrix[x][y].getBackground().equals(new Color(240, 240, 240))) {
-                            estaCompleto = false;
-                        }
-                    }
-                    if (estaCompleto) {
-                        for (int z = y; z > 0; z--) {
-                            for (int j = 0; j < dimx; j++) {
-                                matrix[j][z].setBackground(matrix[j][z - 1].getBackground());
-                            }
-                        }
-                        
-                    }
-
-                }
-
-                int r = (int) (random.nextFloat() * 6);
-
-                if (figura.estaDetenida) {
-                    if (r == 0) {
-                        figura = new I(matrix);
-                        figura.dibujar();
-                    }
-                    if (r == 1) {
-                        figura = new O(matrix);
-                        figura.dibujar();
-                    }
-                    if (r == 2) {
-                        figura = new Z(matrix);
-                        figura.dibujar();
-                    }
-                    if (r == 3) {
-                        figura = new L(matrix);
-                        figura.dibujar();
-                    }
-                    if (r == 4) {
-                        figura = new T(matrix);
-                        figura.dibujar();
-                    }
-                    if (r == 5) {
-                        figura = new S(matrix);
-                        figura.dibujar();
-                    }
-                } else {
-                    figura.bajar();
-                    figura.dibujar();
-                    cont = 0;
-                }
-
-                for (int x = 0; x < dimx; x++) {
-                    for (int y = 0; y < dimy; y++) {
-                        if (matrix[x][y].getBackground().equals(new Color(240, 240, 240))) {
-                            matrix[x][y].setVisible(false);
-                        } else {
-                            matrix[x][y].setVisible(true);
-                        }
-                    }
-                }*/
-
-            }
-        };
-        paso.schedule(baja, 0, 500);
+        Tabla nuevaTabla = new Tabla(matrixes1, Tabla1);
+        JButton[][] matrix1 = nuevaTabla.dibujar();
+        ver.comenzar(evt, matrix, matrix1);
+        
         this.setLocationRelativeTo(null);
 
         // TODO add your handling code here:
@@ -307,6 +224,7 @@ public class Tetris extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Tabla1;
     private javax.swing.JPanel Tablero;
     private javax.swing.JButton btnComenzar;
     private javax.swing.JLabel jLabel1;

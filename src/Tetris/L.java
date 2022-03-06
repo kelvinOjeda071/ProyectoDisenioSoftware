@@ -28,7 +28,6 @@ public class L extends Figura {
         y = 1;
     }
     
-    @Override
     public void dibujar(){
         b1.setBackground(Color.orange);
         b2.setBackground(Color.orange);
@@ -36,7 +35,6 @@ public class L extends Figura {
         b4.setBackground(Color.orange);
     }
     
-    @Override
     public void bajar() {
 
         if (estaDetenida) {
@@ -157,7 +155,6 @@ public class L extends Figura {
         }
     }
 
-    @Override
     public void moverDerecha() {
         if (estaDetenida) {
             return;
@@ -241,7 +238,6 @@ public class L extends Figura {
         }
     }
 
-    @Override
     public void moverIzquierda() {
         if (estaDetenida) {
             return;
@@ -327,7 +323,6 @@ public class L extends Figura {
 
     }
 
-    @Override
     public void rotar() {
         if (x + 2 > dimx - 1 || x < 0) {
             return;
