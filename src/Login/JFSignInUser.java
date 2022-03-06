@@ -274,6 +274,7 @@ public class JFSignInUser extends javax.swing.JFrame {
                     }
 
                 } else {
+                    System.out.println("S1");
                     JOptionPane.showMessageDialog(null,
                             "Las contraseñas no son iguales");
                 }

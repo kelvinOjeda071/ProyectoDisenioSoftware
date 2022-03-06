@@ -138,9 +138,7 @@ public class User {
     }
     
     
-    public void logIn(JFLogInUser jfLogInUser){
-        
-    }
+    
     
     public void signIn(JFSignInUser jFSignInUser){
       

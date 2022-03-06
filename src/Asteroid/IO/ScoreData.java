@@ -4,8 +4,7 @@
  */
 package Asteroid.IO;
 
-import Login.JFLogInUser;
-import Login.User;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

@@ -254,6 +254,7 @@ public class GameState extends State{
                 int z = 0;
                 for ( int j = 0; j < dataList.size(); j++){
                     if(dataList.get(j).getCurrentActive() == 1 ){
+                        
                         if(dataList.get(j).getAsteroidGameScore() < 
                                 score){
                                 dataList.get(j).setAsteroidGameScore(score);
