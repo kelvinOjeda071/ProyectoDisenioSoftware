@@ -10,11 +10,11 @@ package Snail;
  *
  * @author User
  */
-public class Jugador {
+public class Player {
     private String nombre;
     private int puntaje;
 
-    public Jugador(String nombre, int puntaje) {
+    public Player(String nombre, int puntaje) {
         this.nombre = nombre;
         this.puntaje = puntaje;
     }

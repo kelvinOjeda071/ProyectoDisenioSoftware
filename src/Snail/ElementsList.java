@@ -15,12 +15,12 @@ import java.util.LinkedList;
  *
  * @author User
  */
-public class ListaElementos {
+public class ElementsList {
     
     private LinkedList <GameElement> lista;
     //private GameElement elemento;
 
-    public ListaElementos() {
+    public ElementsList() {
         lista = new LinkedList<GameElement>();
     }
 

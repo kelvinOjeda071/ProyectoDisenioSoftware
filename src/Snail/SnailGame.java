@@ -18,31 +18,31 @@ import javax.swing.JFrame;
  */
 public class SnailGame extends JFrame{
     private boolean estado;
-    //private Jugador jugador;
-    private Nivel nivel;
+    //private Player jugador;
+    private Escene nivel;
 
    
-    public SnailGame(boolean estado/*Jugador jugador, Nivel nivel*/) throws HeadlessException {
+    public SnailGame(boolean estado/*Player jugador, Escene nivel*/) throws HeadlessException {
         this.estado = false;
         //this.jugador = jugador;
-        nivel = new Nivel();
+        nivel = new Escene();
     }
 
-    public SnailGame(boolean estado, Jugador jugador, Nivel nivel, GraphicsConfiguration gc) {
+    public SnailGame(boolean estado, Player jugador, Escene nivel, GraphicsConfiguration gc) {
         super(gc);
         this.estado = estado;
         //this.jugador = jugador;
         this.nivel = nivel;
     }
 
-    public SnailGame(boolean estado, Jugador jugador, Nivel nivel, String title) throws HeadlessException {
+    public SnailGame(boolean estado, Player jugador, Escene nivel, String title) throws HeadlessException {
         super("Snail");
         this.estado = estado;
         //this.jugador = jugador;
         this.nivel = nivel;
     }
 
-    public SnailGame(boolean estado, Jugador jugador, Nivel nivel, String title, GraphicsConfiguration gc) {
+    public SnailGame(boolean estado, Player jugador, Escene nivel, String title, GraphicsConfiguration gc) {
         super("Snail", gc);
         this.estado = estado;
         //this.jugador = jugador;
@@ -61,14 +61,14 @@ public class SnailGame extends JFrame{
         Obstacle plataforma2 = new Obstacle(0, posicionPlataforma2, 300, 50);
 
         
-        ListaElementos lista = new ListaElementos();
+        ElementsList lista = new ElementsList();
         lista.agregarElemento(caracol);
         lista.agregarElemento(plataforma1);
         lista.agregarElemento(plataforma2);
 
         
         Teclado teclado = new Teclado(caracol);
-        nivel = new Nivel(lista, teclado);
+        nivel = new Escene(lista, teclado);
         this.estado = true;
         this.add(nivel);
         this.setSize(800, 600);

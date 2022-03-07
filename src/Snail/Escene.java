@@ -18,40 +18,34 @@ import javax.swing.JPanel;
  *
  * @author bryan
  */
-public class Nivel extends JPanel {
+public class Escene extends JPanel {
 
-    ListaElementos lista;
-    MyKeyListener listener;
-    Teclado teclado;
+    ElementsList list;
+    GameElement element;
 
-    public Nivel() {
+    public Escene() {
     }
    
-    public Nivel(ListaElementos lista, Teclado teclado) {
-        this.lista = lista;
-        this.teclado = teclado;
-        this.listener = new MyKeyListener(teclado);
-        addKeyListener(listener);
+    public Escene(ElementsList lista) {
+        this.list = lista;
         setFocusable(true);
         
     }
     
     void actualizar(){
        GameElement elemento;
-        for(int i = 0; i<lista.getLista().size(); i++){
-            elemento =lista.getLista().get(i);
+        for(int i = 0; i<list.getLista().size(); i++){
+            elemento =list.getLista().get(i);
             elemento.move();
-            
-            //elemento = null;
         }
+    
     }
-
     public void paint(Graphics g) {
         super.paint(g);
         GameElement elemento;
-        for(int i = 0; i<lista.getLista().size(); i++){
-            elemento =lista.getLista().get(i);
-            elemento.draw(g, elemento.getWidth(), elemento.getHeight());
+        for(int i = 0; i<list.getLista().size(); i++){
+            elemento =list.getLista().get(i);
+            elemento.draw(g, elemento.getHeight(), elemento.getWidth());
             elemento = null;
         }
     }
