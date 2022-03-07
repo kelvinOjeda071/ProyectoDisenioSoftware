@@ -5,25 +5,23 @@
 package Facade;
 
 import Asteroid.Main.AsteroidGame;
-import Snail.SnailGame;
+import Snake.Game;
 import Snake.SnakeGame;
 import Tetris.Tetris;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author KelvinOjeda
- */
+
 public class CheckFacade extends javax.swing.JFrame {
 
     /**
      * Creates new form CheckFacade
      */
     private AsteroidGame asteroidGame;
-    private SnailGame snailGame;
-    private SnakeGame snakeGame;
+    //private SnailGame snailGame;
+     Game snakeGame;
+     SnakeGame s;
     private Tetris tetris;
     public CheckFacade() {
         initComponents();
@@ -115,12 +113,13 @@ public class CheckFacade extends javax.swing.JFrame {
     }//GEN-LAST:event_jBAsteroidGameActionPerformed
 
     private void jBSnakeGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSnakeGameActionPerformed
-        snakeGame= new SnakeGame();
+        snakeGame= new Game();
         snakeGame.startGame();
+
     }//GEN-LAST:event_jBSnakeGameActionPerformed
 
     private void jBSnailGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSnailGameActionPerformed
-        
+        /*
        snailGame= new SnailGame(true);
         
         try {
@@ -129,7 +128,7 @@ public class CheckFacade extends javax.swing.JFrame {
             Logger.getLogger(CheckFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(CheckFacade.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
     }//GEN-LAST:event_jBSnailGameActionPerformed
 
