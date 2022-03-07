@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import Input.Keyboard;
+import Snail.Input.Keyboard;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -36,7 +36,7 @@ public class Snail extends GameElement {
         //this.position.y = 1;
         //this.position.x = 1;
         //this.speedX = 2;
-        this.imagen = new ImageIcon(getClass().getResource("/Imagenes/caracol.png"));
+        this.imagen = new ImageIcon(getClass().getResource("/Snail.Imagenes/caracol.png"));
     }
 
     public void setSpeedX(int speedX) {

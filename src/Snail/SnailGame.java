@@ -1,7 +1,7 @@
 package Snail;
 
 
-import Input.Keyboard;
+import Snail.Input.Keyboard;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.io.IOException;

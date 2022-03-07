@@ -19,8 +19,8 @@ public class Button extends GameElement {
     
     private Obstacle obstaculo;
 
-    public Button(Position posicion, int ancho, int largo) {
-        super(posicion, ancho, largo);
+    public Button(Position posicion, int height, int width) {
+        super(posicion, height, width, 2);
     }
     
     private void activar(){
