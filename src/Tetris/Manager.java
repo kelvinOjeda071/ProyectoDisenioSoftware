@@ -16,29 +16,36 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.swing.JPanel;
 
 
-public class Verificador {
+public class Manager {
     //JButton[][] matrixes;
-    Timer paso;
-    TimerTask baja;
-    Figura figura;
-    Figura figura1;
+    Timer step;
+    TimerTask down;
+    Figure figure;
+    Figure figure1;
     Random random = new Random();
+    Random random1 = new Random();
     int dimx = 10;
     int dimy = 20;
-    int cont = 0;
+    int counter = 0;
+    JPanel table;
+    int r=0;
     //Clip clip;
+    Manager() {
+        //this.table = table;
+    }
     
-    public void Verificador(JButton[][] matrix, JButton[][] matrix1) {
+    public void Manager(JButton[][] matrix, JPanel table) {
+        figure = new L(matrix);
+        figure.draw();
+        figure.goDown();
         
-        figura = new L(matrix);
-        figura.dibujar();
-        figura.bajar();
+        Table ta = new Table(matrix,table);
+        r=(int) (random.nextFloat() * 6);
+        //figura1 = new L(matrix1);
+        //figura1.draw();
         
-        figura1 = new L(matrix1);
-        figura1.dibujar();
-        
-        paso = new Timer();
-        baja = new TimerTask() {
+        step = new Timer();
+        down = new TimerTask() {
             @Override
             public void run() {
                 /*if (!clip.isActive()) try {
@@ -50,16 +57,16 @@ public class Verificador {
 
                 for (int x = 0; x < dimx; x++) {
                     if (!matrix[x][0].getBackground().equals(new Color(240, 240, 240))) {
-                        cont++;
+                        counter++;
                     }
                 }
                 // Funcion para saber si se perdió en el juego
-                if (cont > 5) {
+                if (counter > 5) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Has perdido\n"
                             + "Fin.\n", "Fin del juego", javax.swing.JOptionPane.OK_OPTION);
-                    paso.cancel();
+                    step.cancel();
                     
-                    cont = 0;
+                    counter = 0;
                     return;
                 }
                 // Función para saber si 
@@ -82,41 +89,55 @@ public class Verificador {
 
                 }
                 
-                // Función que genera la siguiente figura al azar
-                int r = (int) (random.nextFloat() * 6);
-                if (figura.estaDetenida) {
+                // Función que genera la siguiente figure al azar
+                
+                /*if(i==0){
+                    r = (int) (random.nextFloat() * 6);
+                }
+                i++;*/
+                int ra = (int) (random1.nextFloat() * 6);
+                //int uno=r;
+                if (figure.isStopped) {
                     if (r == 0) {
-                        figura = new I(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new I(matrix);
+                        figure.draw();
                     }
                     if (r == 1) {
-                        figura = new O(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new O(matrix);
+                        figure.draw();
                     }
                     if (r == 2) {
-                        figura = new Z(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new Z(matrix);
+                        figure.draw();
+                        
                     }
                     if (r == 3) {
-                        figura = new L(matrix);
-                        figura.dibujar();
-                        
-                        figura1 = new L(matrix);
-                        figura1.dibujar();
+                        ta.di(ra);
+                        figure = new L(matrix);
+                        figure.draw();
+                        //ta.di(r);
+                        //figura1 = new L(matrix);
+                        //figura1.draw();
                     }
                     if (r == 4) {
-                        figura = new T(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new T(matrix);
+                        figure.draw();
                     }
                     if (r == 5) {
-                        figura = new S(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new S(matrix);
+                        figure.draw();
                     }
                 } else {
-                    figura.dibujar();
-                    figura.bajar();
-                    cont = 0;
+                    figure.draw();
+                    figure.goDown();
+                    counter = 0;
                 }
+                r=ra;
                 // Las celdas del tablero ya no son visibles una vez se rellenan
                 // con un objeto
                 for (int x = 0; x < dimx; x++) {
@@ -131,69 +152,75 @@ public class Verificador {
 
             }
         };
-        paso.schedule(baja, 0, 500);
+        step.schedule(down, 0, 500);
     }
     /*public void bajarB(){
-        figura.bajar();
+        figure.goDown();
     }
     public void moverDerechaB(){
-        figura.moverDerecha();
+        figure.moveRight();
     }
     public void moverIzquierdaB(){
-        figura.moverIzquierda();
+        figure.moveLeft();
     }
     public void rotarB(){
-        figura.rotar();
+        figure.rotate();
     }*/
     
-    public void movimientoControles(java.awt.event.KeyEvent evt){
+    public void movementsControl(java.awt.event.KeyEvent evt){
         if (evt.getKeyCode() == KeyEvent.VK_S) {
-            figura.bajar();
+            figure.goDown();
         }
         if (evt.getKeyCode() == KeyEvent.VK_D) {
-            figura.moverDerecha();
+            figure.moveRight();
         }
         if (evt.getKeyCode() == KeyEvent.VK_A) {
-            figura.moverIzquierda();
+            figure.moveLeft();
         }
         if (evt.getKeyCode() == KeyEvent.VK_W) {
-            figura.rotar();
+            figure.rotate();
         }
     }
     
-    public void comenzar(java.awt.event.ActionEvent evt, JButton[][] matrix, JButton[][] matrix1){
-        figura = new L(matrix);
-        figura.bajar();
+    public void begin(JButton[][] matrix, JPanel table){
+        step.cancel();
+        //Tablero.removeAll();
+        //cont = 0;
         
-        figura1 = new L(matrix1);
+        figure = new L(matrix);
+        figure.goDown();
         
-        paso = new Timer();
+        Table ta = new Table(matrix,table);
+        r=(int) (random.nextFloat() * 6);
+        //figura1 = new L(matrix1);
+        //Tabla ta = new Table(matrix,table);
+        step = new Timer();
 
-        baja = new TimerTask() {
+        down = new TimerTask() {
             @Override
             public void run() {
                 for (int x = 0; x < dimx; x++) {
                     if (!matrix[x][0].getBackground().equals(new Color(240, 240, 240))) {
-                        cont++;
+                        counter++;
                     }
                 }
 
-                if (cont > 5) {
+                if (counter > 5) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Has perdido\n"
                             + "Fin.\n", "Fin del juego", javax.swing.JOptionPane.OK_OPTION);
-                    paso.cancel();
-                    cont = 0;
+                    step.cancel();
+                    counter = 0;
                     return;
                 }
 
                 for (int y = 0; y < dimy; y++) {
-                    boolean completo = true;
+                    boolean isComplete = true;
                     for (int x = 0; x < dimx; x++) {
                         if (matrix[x][y].getBackground().equals(new Color(240, 240, 240))) {
-                            completo = false;
+                            isComplete = false;
                         }
                     }
-                    if (completo) {
+                    if (isComplete) {
                         for (int z = y; z > 0; z--) {
                             for (int j = 0; j < dimx; j++) {
                                 matrix[j][z].setBackground(matrix[j][z - 1].getBackground());
@@ -204,42 +231,46 @@ public class Verificador {
 
                 }
 
-                int r = (int) (random.nextFloat() * 6);
+                int ra = (int) (random1.nextFloat() * 6);
 
-                if (figura.estaDetenida) {
+                if (figure.isStopped) {
                     if (r == 0) {
-                        figura = new I(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new I(matrix);
+                        figure.draw();
                     }
                     if (r == 1) {
-                        figura = new O(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new O(matrix);
+                        figure.draw();
                     }
                     if (r == 2) {
-                        figura = new Z(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new Z(matrix);
+                        figure.draw();
                     }
                     if (r == 3) {
-                        figura = new L(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new L(matrix);
+                        figure.draw();
                         
-                        figura1 = new L(matrix1);
-                        figura1.dibujar();
                     }
                     if (r == 4) {
-                        figura = new T(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new T(matrix);
+                        figure.draw();
                     }
                     if (r == 5) {
-                        figura = new S(matrix);
-                        figura.dibujar();
+                        ta.di(ra);
+                        figure = new S(matrix);
+                        figure.draw();
                     }
                 } else {
-                    figura.bajar();
-                    figura.dibujar();
-                    cont = 0;
+                    figure.goDown();
+                    figure.draw();
+                    counter = 0;
                 }
-
+                r=ra;
                 for (int x = 0; x < dimx; x++) {
                     for (int y = 0; y < dimy; y++) {
                         if (matrix[x][y].getBackground().equals(new Color(240, 240, 240))) {
@@ -252,13 +283,12 @@ public class Verificador {
 
             }
         };
-        paso.schedule(baja, 0, 500);
+        step.schedule(down, 0, 500);
     }
     
-    public static void comerzarAccion(JPanel Tablero){
+    public static void beginAction(JPanel Tablero){
     
     }
     
-    Verificador() {
-    }
+   
 }

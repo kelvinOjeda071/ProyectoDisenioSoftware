@@ -19,45 +19,19 @@ public class Tetris extends javax.swing.JFrame {
 
     JButton[][] matrixes;
     JButton[][] matrixes1;
-    Timer paso;
-    Random random = new Random();
-    /*TimerTask baja;
-    Figura figura;
-    
-    int dimx = 10;
-    int dimy = 20;*/
-    Figura figura1;
-    int cont = 0;
-    //Clip clip;
-    //AudioInputStream audio2;
-    Verificador ver= new Verificador();
+    Timer step;
+    Figure figure1;
+
+    Manager manager= new Manager();
     public Tetris() {
         initComponents();
         
-        int r = (int) (random.nextFloat() * 6);
-        Tablero nuevoTablero = new Tablero(matrixes, Tablero);
-        JButton[][] matrix = nuevoTablero.dibujar();
+        Board newBoard = new Board(matrixes, board);
+        JButton[][] matrix = newBoard.draw();
         
-        Tabla nuevaTabla = new Tabla(matrixes1, Tabla1);
-        JButton[][] matrix1 = nuevaTabla.dibujar();
+        manager.Manager(matrix, table1);
         
-        ver.Verificador(matrix, matrix1);
-        
-        this.setLocationRelativeTo(null);
-    }
-    public static void dib(int ran){
-        /*JButton b = new JButton();
-        JButton c = new JButton();
-        JButton d = new JButton();
-        JButton e = new JButton();
-        b.setBounds(5, 5, 30, 30);
-        Tabla1.add(b);
-        c.setBounds(30, 5, 30, 30);
-        Tabla1.add(c);
-        d.setBounds(55, 5, 30, 30);
-        Tabla1.add(d);
-        e.setBounds(5, 30, 30, 30);
-        Tabla1.add(e);*/
+        //this.setLocationRelativeTo(null);
     }
 
     /**
@@ -69,34 +43,34 @@ public class Tetris extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Tablero = new javax.swing.JPanel();
+        board = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnComenzar = new javax.swing.JButton();
+        btnBegin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        Tabla1 = new javax.swing.JPanel();
+        table1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(200, 640));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Tablero.setBackground(new java.awt.Color(255, 200, 236));
-        Tablero.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(Tablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 320, 610));
+        board.setBackground(new java.awt.Color(255, 200, 236));
+        board.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(board, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 320, 610));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnComenzar.setText("Comenzar");
-        btnComenzar.addActionListener(new java.awt.event.ActionListener() {
+        btnBegin.setText("Comenzar");
+        btnBegin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnComenzarActionPerformed(evt);
+                btnBeginActionPerformed(evt);
             }
         });
-        btnComenzar.addKeyListener(new java.awt.event.KeyAdapter() {
+        btnBegin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnComenzarKeyPressed(evt);
+                btnBeginKeyPressed(evt);
             }
         });
 
@@ -125,7 +99,7 @@ public class Tetris extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(402, 402, 402)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnComenzar))
+                    .addComponent(btnBegin))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -139,52 +113,53 @@ public class Tetris extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnComenzar)
+                .addComponent(btnBegin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, -1));
 
-        Tabla1.setBackground(new java.awt.Color(153, 0, 153));
+        table1.setBackground(new java.awt.Color(153, 0, 153));
 
-        javax.swing.GroupLayout Tabla1Layout = new javax.swing.GroupLayout(Tabla1);
-        Tabla1.setLayout(Tabla1Layout);
-        Tabla1Layout.setHorizontalGroup(
-            Tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout table1Layout = new javax.swing.GroupLayout(table1);
+        table1.setLayout(table1Layout);
+        table1Layout.setHorizontalGroup(
+            table1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
-        Tabla1Layout.setVerticalGroup(
-            Tabla1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        table1Layout.setVerticalGroup(
+            table1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 160, Short.MAX_VALUE)
         );
 
-        getContentPane().add(Tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, 160));
+        getContentPane().add(table1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, -1, 160));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnComenzarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnComenzarKeyPressed
-        ver.movimientoControles(evt);
+    private void btnBeginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBeginKeyPressed
+        manager.movementsControl(evt);
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnComenzarKeyPressed
+    }//GEN-LAST:event_btnBeginKeyPressed
 
-    private void btnComenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComenzarActionPerformed
-        paso.cancel();
-        Tablero.removeAll();
-        cont = 0;
+    private void btnBeginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeginActionPerformed
+        //paso.cancel();
+        board.removeAll();
+        table1.removeAll();
+        //cont = 0;
         
-        Tablero nuevoTablero = new Tablero(matrixes, Tablero);
-        JButton[][] matrix = nuevoTablero.dibujar();
+        Board newBoard = new Board(matrixes, board);
+        JButton[][] matrix = newBoard.draw();
         
-        Tabla nuevaTabla = new Tabla(matrixes1, Tabla1);
-        JButton[][] matrix1 = nuevaTabla.dibujar();
-        ver.comenzar(evt, matrix, matrix1);
+        //Tabla nuevaTabla = new Tabla(matrixes1, table1);
+        //JButton[][] matrix1 = nuevaTabla.draw();
+        manager.begin(matrix, table1);
         
         this.setLocationRelativeTo(null);
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnComenzarActionPerformed
+    }//GEN-LAST:event_btnBeginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,14 +199,14 @@ public class Tetris extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Tabla1;
-    private javax.swing.JPanel Tablero;
-    private javax.swing.JButton btnComenzar;
+    private javax.swing.JPanel board;
+    private javax.swing.JButton btnBegin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel table1;
     // End of variables declaration//GEN-END:variables
 
 }

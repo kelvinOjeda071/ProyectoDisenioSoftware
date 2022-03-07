@@ -4,7 +4,7 @@ package Tetris;
 import java.awt.Color;
 import javax.swing.JButton;
 
-public class Z extends Figura {
+public class Z extends Figure {
 
     JButton b1;
     JButton b2;
@@ -16,7 +16,7 @@ public class Z extends Figura {
     public Z(JButton[][] matriz) {
         super(matriz);
         horizontal = true;
-        estaDetenida = false;
+        isStopped = false;
         b1 = matriz[dimx / 2][0];
         b2 = matriz[dimx / 2 + 1][0];
         b3 = matriz[dimx / 2 + 1][1];
@@ -25,20 +25,20 @@ public class Z extends Figura {
         y = 1;
     }
     
-    public void dibujar(){
+    public void draw(){
         b1.setBackground(Color.cyan);
         b2.setBackground(Color.cyan);
         b3.setBackground(Color.cyan);
         b4.setBackground(Color.cyan);
     }
     
-    public void bajar() {
-        if (estaDetenida) {
+    public void goDown() {
+        if (isStopped) {
             return;
         }
 
         if (y >= dimy - 1) {
-            estaDetenida = true;
+            isStopped = true;
             return;
         }
 
@@ -46,14 +46,14 @@ public class Z extends Figura {
                 && (!matrix[x + 1][y + 1].getBackground().equals(new Color(240, 240, 240))
                 || !matrix[x][y].getBackground().equals(new Color(240, 240, 240))
                 || !matrix[x + 2][y + 1].getBackground().equals(new Color(240, 240, 240)))) {
-            estaDetenida = true;
+            isStopped = true;
             return;
         }
 
         if (!horizontal
                 && (!matrix[x + 1][y].getBackground().equals(new Color(240, 240, 240))
                 || !matrix[x][y + 1].getBackground().equals(new Color(240, 240, 240)))) {
-            estaDetenida = true;
+            isStopped = true;
             return;
         }
 
@@ -89,8 +89,8 @@ public class Z extends Figura {
         }
     }
 
-    public void moverDerecha() {
-        if (estaDetenida) {
+    public void moveRight() {
+        if (isStopped) {
             return;
         }
         if (horizontal && x + 2 >= dimx - 1) {
@@ -132,8 +132,8 @@ public class Z extends Figura {
         }
     }
 
-    public void moverIzquierda() {
-        if (estaDetenida) {
+    public void moveLeft() {
+        if (isStopped) {
             return;
         }
         if (x - 1 < 0) {
@@ -174,7 +174,7 @@ public class Z extends Figura {
         }
     }
 
-    public void rotar() {
+    public void rotate() {
         if (x + 1 > dimx - 1 || x < 0) {
             return;
         }

@@ -4,34 +4,34 @@ package Tetris;
 import java.awt.Color;
 import javax.swing.JButton;
 
-public class O extends Figura {
+public class O extends Figure {
 
     JButton b1;
     JButton b2;
     JButton b3;
     JButton b4;
     int x, y;
-    JButton[][] matriz;
+    JButton[][] matrix1;
 
-    public O(JButton[][] matriz) {
-        super(matriz);
-        //this.matriz = matriz;
-        estaDetenida = false;
-        b1 = matriz[dimx / 2][0];
-        b2 = matriz[dimx / 2][1];
-        b3 = matriz[dimx / 2 + 1][0];
-        b4 = matriz[dimx / 2 + 1][1];
+    public O(JButton[][] matrix2) {
+        super(matrix2);
+        //this.matrix1 = matrix1;
+        isStopped = false;
+        b1 = matrix2[dimx / 2][0];
+        b2 = matrix2[dimx / 2][1];
+        b3 = matrix2[dimx / 2 + 1][0];
+        b4 = matrix2[dimx / 2 + 1][1];
         x = dimx / 2;
         y = 1;
         
     }
     
-    public void dibujar(){
-        estaDetenida = false;
-        /*b1 = matriz[dimx / 2][0];
-        b2 = matriz[dimx / 2][1];
-        b3 = matriz[dimx / 2 + 1][0];
-        b4 = matriz[dimx / 2 + 1][1];
+    public void draw(){
+        isStopped = false;
+        /*b1 = matrix1[dimx / 2][0];
+        b2 = matrix1[dimx / 2][1];
+        b3 = matrix1[dimx / 2 + 1][0];
+        b4 = matrix1[dimx / 2 + 1][1];
         x = dimx / 2;
         y = 1;*/
         
@@ -41,24 +41,24 @@ public class O extends Figura {
         b4.setBackground(Color.BLUE);
     }
     
-    public void bajar() {
+    public void goDown() {
 
-        if (estaDetenida) {
+        if (isStopped) {
             return;
         }
 
         if (y >= dimy - 1) {
-            estaDetenida = true;
+            isStopped = true;
             return;
         }
 
         if (!matrix[x][y + 1].getBackground().equals(new Color(240, 240, 240))) {
-            estaDetenida = true;
+            isStopped = true;
             return;
         }
         if (!matrix[x + 1][y + 1].getBackground().equals(new Color(240, 240, 240))
                 || !matrix[x][y + 1].getBackground().equals(new Color(240, 240, 240))) {
-            estaDetenida = true;
+            isStopped = true;
             return;
         }
 
@@ -80,8 +80,8 @@ public class O extends Figura {
 
     }
 
-    public void moverDerecha() {
-        if (estaDetenida) {
+    public void moveRight() {
+        if (isStopped) {
             return;
         }
         if (x >= dimx - 1) {
@@ -110,8 +110,8 @@ public class O extends Figura {
 
     }
 
-    public void moverIzquierda() {
-        if (estaDetenida) {
+    public void moveLeft() {
+        if (isStopped) {
             return;
         }
         if (x - 1 < 0) {
@@ -138,7 +138,7 @@ public class O extends Figura {
 
     }
 
-    public void rotar() {;
+    public void rotate() {;
     }
 
 }
