@@ -1,12 +1,16 @@
 package Snake;
 
-<<<<<<< Updated upstream
-
+import Snake.Board;
 import static Snake.Snake.r;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.PointerInfo;
 import java.util.ArrayList;
+import java.util.Random;
 
-public class SnakeGame {
+public class Game {
     Board board;
     Snake snake; 
     Food food;
@@ -53,11 +57,3 @@ public class SnakeGame {
     }*/
     
 }
-=======
-public class SnakeGame {
-    public static void main(String[] args) {
-        Game c = new Game();
-        c.startGame();
-    }
-}
->>>>>>> Stashed changes

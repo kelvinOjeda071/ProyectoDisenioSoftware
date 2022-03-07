@@ -1,4 +1,8 @@
 package Snake;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 import java.awt.Color;
 import java.awt.MouseInfo;
 import java.awt.Point;
