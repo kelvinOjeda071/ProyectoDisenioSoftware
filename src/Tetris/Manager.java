@@ -162,16 +162,16 @@ public class Manager {
     }*/
     
     public void movementsControl(java.awt.event.KeyEvent evt){
-        if (evt.getKeyCode() == KeyEvent.VK_S) {
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
             figure.goDown();
         }
-        if (evt.getKeyCode() == KeyEvent.VK_D) {
+        if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
             figure.moveRight();
         }
-        if (evt.getKeyCode() == KeyEvent.VK_A) {
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
             figure.moveLeft();
         }
-        if (evt.getKeyCode() == KeyEvent.VK_W) {
+        if (evt.getKeyCode() == KeyEvent.VK_UP) {
             figure.rotate();
         }
     }
