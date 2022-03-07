@@ -151,19 +151,19 @@ public class CheckFacade extends javax.swing.JFrame {
             .addGroup(jPBackGroudLayout.createSequentialGroup()
                 .addGroup(jPBackGroudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPBackGroudLayout.createSequentialGroup()
-                        .addGap(285, 285, 285)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPBackGroudLayout.createSequentialGroup()
                         .addGap(277, 277, 277)
-                        .addComponent(jBExit, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBExit, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPBackGroudLayout.createSequentialGroup()
+                        .addGap(287, 287, 287)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPBackGroudLayout.setVerticalGroup(
             jPBackGroudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBackGroudLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(65, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPBackGroudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPBackGroudLayout.createSequentialGroup()
                         .addGroup(jPBackGroudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -201,16 +201,19 @@ public class CheckFacade extends javax.swing.JFrame {
     private void jBAsteroidGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsteroidGameActionPerformed
         asteroidGame= new AsteroidGame();
         asteroidGame.showWindow();
+        this.setVisible(false);
     }//GEN-LAST:event_jBAsteroidGameActionPerformed
 
     private void jBSnakeGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSnakeGameActionPerformed
         snakeGame= new SnakeGame();
         snakeGame.startGame();
+        this.setVisible(false);
     }//GEN-LAST:event_jBSnakeGameActionPerformed
 
     private void jBSnailGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSnailGameActionPerformed
         
        snailGame= new SnailGame(true);
+       this.setVisible(false);
         
         try {
             snailGame.iniciarJuego();
@@ -225,6 +228,7 @@ public class CheckFacade extends javax.swing.JFrame {
     private void jBTetrisGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBTetrisGameActionPerformed
         tetris= new Tetris();
         tetris.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jBTetrisGameActionPerformed
 
     private void jBExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExitActionPerformed

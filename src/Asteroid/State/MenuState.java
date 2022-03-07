@@ -10,6 +10,7 @@ import Asteroid.State.GameState;
 import Asteroid.State.State;
 import Asteroid.UI.Action;
 import Asteroid.UI.Button;
+import Facade.CheckFacade;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -42,11 +43,12 @@ public class MenuState extends State {
                 Asset.blueBtn,
                 Constant.WIDTH / 2 - Asset.greyBtn.getWidth() / 2,
                 Constant.HEIGHT / 2 + Asset.greyBtn.getHeight() * 2,
-                Constant.EXIT,
+                Constant.RETURN,
                 new Action() {
             @Override
             public void doAction() {
-                System.exit(0);
+                CheckFacade checkFacade = new CheckFacade();
+                checkFacade.setVisible(true);
             }
         }
         ));

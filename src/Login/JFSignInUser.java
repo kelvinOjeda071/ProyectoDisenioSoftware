@@ -301,8 +301,8 @@ public class JFSignInUser extends javax.swing.JFrame {
                         if (this.jTFId.getText().equals(dataList.get(i).getId())) {
                             j++;
                             if (j == 1) {
-                                JOptionPane.showMessageDialog(null, "El usuario "
-                                        + "ya se encuentra regitrado");
+                                JOptionPane.showMessageDialog(null, "The user is"
+                                        + " already registered");
                                 j = dataList.size();
                                 i=j;
                                 isFound = true;
@@ -321,6 +321,8 @@ public class JFSignInUser extends javax.swing.JFrame {
                         ));
 
                         JSONParser.writeFile(dataList);
+                        JOptionPane.showMessageDialog(null, "Successfully"
+                                        + " registered user");
                         setEmptyLabels();
                         this.jfLoginUser.setVisible(true);
                         this.setVisible(false);
@@ -328,12 +330,12 @@ public class JFSignInUser extends javax.swing.JFrame {
                     }
 
                 } else {
-                    System.out.println("S1");
+                   
                     JOptionPane.showMessageDialog(null,
-                            "Las contraseñas no son iguales");
+                            "Passwords are not the same");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Complete los campos adecuadamente");
+                JOptionPane.showMessageDialog(null, "Enter the fields correctly");
             }
         } catch (IOException ex) {
             Logger.getLogger(JFSignInUser.class.getName()).log(Level.SEVERE, null, ex);

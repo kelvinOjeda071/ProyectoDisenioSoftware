@@ -214,18 +214,18 @@ public class JFLogIn extends javax.swing.JFrame {
     String id = this.jTFId.getText();
         String password = this.jTFPassword.getText();
         if (password.equals("") || id.equals("")) {
-            JOptionPane.showMessageDialog(null, "Ingrese campos obligatorios");
+            JOptionPane.showMessageDialog(null, "Enter the fields correctly");
         } else {
         try {
             ArrayList <User> dataList = JSONParser.readField();
             
             boolean isFound = false;
             int j = 0;
-            if (dataList.size() > 0){
+            
                 for ( int i = 0; i < dataList.size(); i++){
-                    System.out.println(dataList.get(i).getId()+" "+dataList.get(i).getPassword());
+                    
                     if (id.equals(dataList.get(i).getId())) {
-                        System.out.println(jTFPassword.getText());
+                        
                         
                         if (password.equals(
                                 dataList.get(i).getPassword())) {
@@ -239,14 +239,16 @@ public class JFLogIn extends javax.swing.JFrame {
                                     Logger.getLogger(JFLogIn.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                                 isFound = true;
+                                JOptionPane.showMessageDialog(null, "Your "
+                                        + "credentials are correct");
                                 new CheckFacade().setVisible(true);
                                 this.setVisible(false);
                                 i = dataList.size();
                                 
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "El usuario "
-                                    + "o la contraseña están mal escritos");
+                            JOptionPane.showMessageDialog(null, "The username "
+                                    + "or password is wrong");
                             setEmptyLabels();
 
                         }
@@ -255,12 +257,8 @@ public class JFLogIn extends javax.swing.JFrame {
                         
                     
                 }
-            }else{
-                JOptionPane.showMessageDialog(null, "El usuario aún no existe");
-            }
-            
             if( isFound == false){
-                JOptionPane.showMessageDialog(null, "El usuario aún no existe");
+                JOptionPane.showMessageDialog(null, "The user does not exist yet");
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(JFLogIn.class.getName()).log(Level.SEVERE, null, ex);
