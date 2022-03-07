@@ -28,21 +28,22 @@ public class Manager {
     int dimy = 20;
     int counter = 0;
     JPanel table;
-    int r=0;
+    int one=0;
+    int r = (int) (random1.nextFloat() * 6);
     //Clip clip;
     Manager() {
         //this.table = table;
     }
     
-    public void Manager(JButton[][] matrix, JPanel table) {
+    public void Manager(JButton[][] matrix, JPanel tabla) {
         figure = new L(matrix);
         figure.draw();
         figure.goDown();
         
-        Table ta = new Table(matrix,table);
-        r=(int) (random.nextFloat() * 6);
+        Table ta = new Table(matrix,tabla);
+        //int r=(int) (random.nextFloat() * 6);
         //figura1 = new L(matrix1);
-        //figura1.draw();
+        //figura1.dibujar();
         
         step = new Timer();
         down = new TimerTask() {
@@ -71,13 +72,13 @@ public class Manager {
                 }
                 // Función para saber si 
                 for (int y = 0; y < dimy; y++) {
-                    boolean completo = true;
+                    boolean isComplete = true;
                     for (int x = 0; x < dimx; x++) {
                         if (matrix[x][y].getBackground().equals(new Color(240, 240, 240))) {
-                            completo = false;
+                            isComplete = false;
                         }
                     }
-                    if (completo) {
+                    if (isComplete) {
 
                         for (int z = y; z > 0; z--) {
                             for (int j = 0; j < dimx; j++) {
@@ -95,49 +96,47 @@ public class Manager {
                     r = (int) (random.nextFloat() * 6);
                 }
                 i++;*/
-                int ra = (int) (random1.nextFloat() * 6);
-                //int uno=r;
+                //int ra = (int) (random1.nextFloat() * 6);
+                
                 if (figure.isStopped) {
+                    int ra = (int) (random1.nextFloat() * 6);
                     if (r == 0) {
-                        ta.draw(ra);
+                        ta.draw(r);
                         figure = new I(matrix);
                         figure.draw();
                     }
                     if (r == 1) {
-                        ta.draw(ra);
+                        ta.draw(r);
                         figure = new O(matrix);
                         figure.draw();
                     }
                     if (r == 2) {
-                        ta.draw(ra);
+                        ta.draw(r);
                         figure = new Z(matrix);
                         figure.draw();
-                        
                     }
                     if (r == 3) {
-                        ta.draw(ra);
+                        ta.draw(r);
                         figure = new L(matrix);
                         figure.draw();
-                        //ta.draw(r);
-                        //figura1 = new L(matrix);
-                        //figura1.draw();
                     }
                     if (r == 4) {
-                        ta.draw(ra);
+                        ta.draw(r);
                         figure = new T(matrix);
                         figure.draw();
                     }
                     if (r == 5) {
-                        ta.draw(ra);
+                        ta.draw(r);
                         figure = new S(matrix);
                         figure.draw();
                     }
+                    r=ra;
                 } else {
                     figure.draw();
                     figure.goDown();
                     counter = 0;
                 }
-                r=ra;
+                
                 // Las celdas del tablero ya no son visibles una vez se rellenan
                 // con un objeto
                 for (int x = 0; x < dimx; x++) {
@@ -155,16 +154,16 @@ public class Manager {
         step.schedule(down, 0, 500);
     }
     /*public void bajarB(){
-        figure.goDown();
+        figure.bajar();
     }
     public void moverDerechaB(){
-        figure.moveRight();
+        figure.moverDerecha();
     }
     public void moverIzquierdaB(){
-        figure.moveLeft();
+        figure.moverIzquierda();
     }
     public void rotarB(){
-        figure.rotate();
+        figure.rotar();
     }*/
     
     public void movementsControl(java.awt.event.KeyEvent evt){
@@ -182,7 +181,7 @@ public class Manager {
         }
     }
     
-    public void begin(JButton[][] matrix, JPanel table){
+    public void begin(JButton[][] matrix, JPanel tabla){
         step.cancel();
         //Tablero.removeAll();
         //cont = 0;
@@ -190,10 +189,8 @@ public class Manager {
         figure = new L(matrix);
         figure.goDown();
         
-        Table ta = new Table(matrix,table);
-        r=(int) (random.nextFloat() * 6);
-        //figura1 = new L(matrix1);
-        //Tabla ta = new Table(matrix,table);
+        Table ta = new Table(matrix,tabla);
+        //int r = (int) (random1.nextFloat() * 6);
         step = new Timer();
 
         down = new TimerTask() {
@@ -214,13 +211,13 @@ public class Manager {
                 }
 
                 for (int y = 0; y < dimy; y++) {
-                    boolean isComplete = true;
+                    boolean completo = true;
                     for (int x = 0; x < dimx; x++) {
                         if (matrix[x][y].getBackground().equals(new Color(240, 240, 240))) {
-                            isComplete = false;
+                            completo = false;
                         }
                     }
-                    if (isComplete) {
+                    if (completo) {
                         for (int z = y; z > 0; z--) {
                             for (int j = 0; j < dimx; j++) {
                                 matrix[j][z].setBackground(matrix[j][z - 1].getBackground());
@@ -231,46 +228,57 @@ public class Manager {
 
                 }
 
-                int ra = (int) (random1.nextFloat() * 6);
-
+                
+                //int r = (int) (random1.nextFloat() * 6);
+                
                 if (figure.isStopped) {
+                    //System.out.println(r+ " -- "+one);
+                    int ra = (int) (random1.nextFloat() * 6);
+                    tabla.removeAll();
+                    ta.draw(ra);
                     if (r == 0) {
-                        ta.draw(ra);
+                        //tabla.removeAll();
+                        //ta.draw(ra);
                         figure = new I(matrix);
                         figure.draw();
                     }
                     if (r == 1) {
-                        ta.draw(ra);
+                        //tabla.removeAll();
+                        //ta.draw(ra);
                         figure = new O(matrix);
                         figure.draw();
                     }
                     if (r == 2) {
-                        ta.draw(ra);
+                        //tabla.removeAll();
+                        //ta.draw(ra);
                         figure = new Z(matrix);
                         figure.draw();
                     }
                     if (r == 3) {
-                        ta.draw(ra);
+                        //tabla.removeAll();
+                        //ta.draw(ra);
                         figure = new L(matrix);
                         figure.draw();
                         
                     }
                     if (r == 4) {
-                        ta.draw(ra);
+                        //tabla.removeAll();
+                        //ta.draw(ra);
                         figure = new T(matrix);
                         figure.draw();
                     }
                     if (r == 5) {
-                        ta.draw(ra);
+                        //tabla.removeAll();
+                        //ta.draw(ra);
                         figure = new S(matrix);
                         figure.draw();
                     }
+                    r = ra;
                 } else {
                     figure.goDown();
                     figure.draw();
                     counter = 0;
                 }
-                r=ra;
                 for (int x = 0; x < dimx; x++) {
                     for (int y = 0; y < dimy; y++) {
                         if (matrix[x][y].getBackground().equals(new Color(240, 240, 240))) {
@@ -286,7 +294,7 @@ public class Manager {
         step.schedule(down, 0, 500);
     }
     
-    public static void beginAction(JPanel Tablero){
+    public static void comerzarAccion(JPanel Tablero){
     
     }
     
