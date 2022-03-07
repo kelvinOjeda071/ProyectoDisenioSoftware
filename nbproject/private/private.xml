@@ -5,14 +5,13 @@
         <group>
             <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/T.java</file>
             <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/I.java</file>
-            <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/Figure.java</file>
-            <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/Manager.java</file>
             <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/Tetris.java</file>
+            <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/Manager.java</file>
             <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/O.java</file>
-            <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/Table.java</file>
+            <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Facade/CheckFacade.java</file>
             <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/L.java</file>
+            <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Main/Main.java</file>
             <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/S.java</file>
-            <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/Board.java</file>
             <file>file:/D:/GitHub/ProyectoDisenioSoftware/src/Tetris/Z.java</file>
         </group>
     </open-files>
