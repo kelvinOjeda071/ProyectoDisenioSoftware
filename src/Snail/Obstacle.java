@@ -60,7 +60,14 @@ public class Obstacle extends GameElement {
         //System.out.print("Moviendo\n");
     }
 
- 
+ public void open() {
+        if (this.tipoObstaculo == 1) {
+            this.setHeight(0);
+            this.setWidth(0);
+            this.setPosicionY(-1);
+            this.setPosicionX(-1);
+        }
+    }
 
    
 

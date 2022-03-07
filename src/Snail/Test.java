@@ -23,8 +23,7 @@ public class Test {
     public static void main(String[] args) throws IOException, InterruptedException {
         // TODO code application l
         
-        SnailGame juego = new SnailGame(true);
-        juego.startGame();
+        SnailGame juego = new SnailGame();
         
         
         /*Posicion posicion = new Posicion(1, 1);

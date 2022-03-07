@@ -19,7 +19,8 @@ public class Player {
         this.puntaje = puntaje;
     }
     
-    public void renovarPuntaje(int newPuntaje){
+    public void renovarPuntaje(String nombre, int newPuntaje){
+        this.nombre = nombre;
         this.puntaje = newPuntaje;
     }
     

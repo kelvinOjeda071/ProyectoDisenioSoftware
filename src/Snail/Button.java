@@ -17,13 +17,48 @@ import java.awt.event.KeyEvent;
  */
 public class Button extends GameElement {
     
-    private Obstacle obstaculo;
+    private Obstacle obstacle;
 
-    public Button(Position posicion, int height, int width) {
+    public Button(Position posicion, int height, int width, Obstacle obstacle) {
         super(posicion, height, width, 2);
+        this.obstacle = obstacle;
     }
     
-    private void activar(){
+    public void activar(Snail snail){
+        int posYSnail = snail.position.y;
+        int posXSnail = snail.position.x;
+        int heightSnail = snail.height;
+        int widthSnail = snail.width;
+        int speedSnailX = snail.speedX;
+        int speedSnailY = snail.speedY;
+
+        int posYEnemy = this.position.y;
+        int posXEnemy = this.position.x;
+        int heightEnemy = this.height;
+        int widthEnemy = this.width;
+
+        if ((posXSnail + widthSnail > posXEnemy)
+                && (posXSnail < posXEnemy + widthEnemy)
+                && (posYSnail + heightSnail + speedSnailY > posYEnemy)
+                && (posYSnail + speedSnailY < posYEnemy + heightEnemy)) {
+            //this.snail.setPosicionX(posXEnemy - widthSnail );
+            System.out.println("ENTRO PRIMER IF");
+            this.obstacle.open();
+        } else {
+            if ((posXSnail + widthSnail + speedSnailX > posXEnemy)
+                    && (posXSnail + speedSnailX < posXEnemy + widthEnemy)
+                    && (posYSnail + heightSnail > posYEnemy)
+                    && (posYSnail < posYEnemy + heightEnemy)) {
+                //snail.setPosicionY(posYEnemy - heightSnail );
+                //snail.setSpeedX(speedSnailY=0);
+                System.out.println("ENTRO SEGUNDO IF");
+                this.obstacle.open();
+            } else {
+                System.out.println("NO ENTRO A NINGUN IF");
+            }
+
+        }
+
         
     }
     

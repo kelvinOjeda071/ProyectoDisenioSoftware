@@ -27,50 +27,43 @@ public class Enemy extends GameElement {
     }
 
     public boolean atacarCaracol(Snail snail) {
-        
-        int posYSnail = snail.position.y; 
+
+        int posYSnail = snail.position.y;
         int posXSnail = snail.position.x;
         int heightSnail = snail.height;
         int widthSnail = snail.width;
         int speedSnailX = snail.speedX;
         int speedSnailY = snail.speedY;
-        
-        int posYEnemy = this.position.y; 
-        int posXEnemy = this.position.x; 
+
+        int posYEnemy = this.position.y;
+        int posXEnemy = this.position.x;
         int heightEnemy = this.height;
         int widthEnemy = this.width;
 
-        
-        
-        if((posXSnail + widthSnail > posXEnemy)&&
-            (posXSnail < posXEnemy + widthEnemy ) &&
-            (posYSnail + heightSnail + speedSnailY > posYEnemy)&&
-            (posYSnail + speedSnailY < posYEnemy + heightEnemy)){
+        if ((posXSnail + widthSnail > posXEnemy)
+                && (posXSnail < posXEnemy + widthEnemy)
+                && (posYSnail + heightSnail + speedSnailY > posYEnemy)
+                && (posYSnail + speedSnailY < posYEnemy + heightEnemy)) {
             //this.snail.setPosicionX(posXEnemy - widthSnail );
             System.out.println("ENTRO PRIMER IF");
             return false;
-        }
-        else{
-            if((posXSnail + widthSnail + speedSnailX > posXEnemy)&&
-            (posXSnail+speedSnailX < posXEnemy + widthEnemy ) &&
-            (posYSnail + heightSnail > posYEnemy)&&
-            (posYSnail < posYEnemy + heightEnemy)){
-            //snail.setPosicionY(posYEnemy - heightSnail );
-            //snail.setSpeedX(speedSnailY=0);
-            System.out.println("ENTRO SEGUNDO IF");
-            return false;
-        }
-            else{
+        } else {
+            if ((posXSnail + widthSnail + speedSnailX > posXEnemy)
+                    && (posXSnail + speedSnailX < posXEnemy + widthEnemy)
+                    && (posYSnail + heightSnail > posYEnemy)
+                    && (posYSnail < posYEnemy + heightEnemy)) {
+                //snail.setPosicionY(posYEnemy - heightSnail );
+                //snail.setSpeedX(speedSnailY=0);
+                System.out.println("ENTRO SEGUNDO IF");
+                return false;
+            } else {
                 System.out.println("NO ENTRO A NINGUN IF");
                 return true;
+            }
+
         }
-            
-            
-        }
-                
-                
-        
-       /* if((posXSnail + widthSnail > posXEnemy)&&
+
+        /* if((posXSnail + widthSnail > posXEnemy)&&
             (posXSnail < posXEnemy + widthEnemy ) &&
             (posYSnail + heightSnail + speedSnailY > posYEnemy)&&
             (posYSnail + speedSnailY < posYEnemy + heightEnemy)){
@@ -81,9 +74,7 @@ public class Enemy extends GameElement {
         else{
            return true;
         }
-        */
-        
-
+         */
     }
 
     @Override
@@ -100,9 +91,14 @@ public class Enemy extends GameElement {
     public void move() {
         int x0 = this.position.getX();
         int y0 = this.position.getY();
-        
-        if((y0>=0) && (y0 < 500)){
-        this.position.setY(y0 + 1);
+
+        if ((y0 >= 0) && (y0 < 200)) {
+            this.position.setY(y0 + 1);
+        }
+        if (y0 == 200) {
+            for (int i = 0; i < 200; i++) {
+                this.position.setY(200 - i);
+            }
         }
     }
 

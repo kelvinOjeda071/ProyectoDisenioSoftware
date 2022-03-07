@@ -63,9 +63,6 @@ public class Snail extends GameElement {
 
     }
 
-    public void acelerar() {
-
-    }
 
     @Override
     public void move() {
