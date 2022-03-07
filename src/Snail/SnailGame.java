@@ -32,7 +32,7 @@ public class SnailGame extends JFrame {
 
     public SnailGame() {
         keyboard = new Keyboard();
-        startGame();
+        //startGame();
     }
 
     public void startGame() {
@@ -71,21 +71,19 @@ public class SnailGame extends JFrame {
         this.add(nivel);
         this.setSize(1200, 800);
         this.setVisible(state);
-        this.setLocation(600, 300);
+        this.setLocation(100, 200);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         this.nivel.update();
         keyboard.update();
         this.repaint();
         boton1.activate(caracol);
-        
-        
-        
+
         while (state) {
             this.run(boton1, caracol, lista, enemy, portal);
-            
+            break;
         }
-
+        
         //t0 = System.nanoTime();
         //System.out.print("TIEMPO INICIAL" + t0);
         /*while (state) 
@@ -121,11 +119,6 @@ public class SnailGame extends JFrame {
 
     public void run(Button boton1, Snail caracol, ElementsList lista, Enemy enemy, Portal portal) {
 
-        this.nivel.update();
-        keyboard.update();
-        this.repaint();
-        boton1.activate(caracol);
-
         for (int i = 1; i < lista.getLista().size(); i++) {
             GameElement element = lista.getLista().get(i);
             colision = new Collision(caracol, element);
@@ -141,11 +134,10 @@ public class SnailGame extends JFrame {
 
         try {
             Thread.sleep(10);
-            
+
         } catch (InterruptedException ex) {
             Logger.getLogger(SnailGame.class.getName()).log(Level.SEVERE, null, ex);
         }
-
 
     }
 
