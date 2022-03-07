@@ -31,6 +31,7 @@ public class Manager {
     int one=0;
     int r = (int) (random1.nextFloat() * 6);
     //Clip clip;
+    
     Manager() {
         //this.table = table;
     }
@@ -92,45 +93,39 @@ public class Manager {
                 
                 // Función que genera la siguiente figure al azar
                 
-                /*if(i==0){
-                    r = (int) (random.nextFloat() * 6);
-                }
-                i++;*/
-                //int ra = (int) (random1.nextFloat() * 6);
-                
                 if (figure.isStopped) {
                     int ra = (int) (random1.nextFloat() * 6);
                     if (r == 0) {
-                        ta.draw(r);
+                        ta.draw(ra);
                         figure = new I(matrix);
                         figure.draw();
                     }
                     if (r == 1) {
-                        ta.draw(r);
+                        ta.draw(ra);
                         figure = new O(matrix);
                         figure.draw();
                     }
                     if (r == 2) {
-                        ta.draw(r);
+                        ta.draw(ra);
                         figure = new Z(matrix);
                         figure.draw();
                     }
                     if (r == 3) {
-                        ta.draw(r);
+                        ta.draw(ra);
                         figure = new L(matrix);
                         figure.draw();
                     }
                     if (r == 4) {
-                        ta.draw(r);
+                        ta.draw(ra);
                         figure = new T(matrix);
                         figure.draw();
                     }
                     if (r == 5) {
-                        ta.draw(r);
+                        ta.draw(ra);
                         figure = new S(matrix);
                         figure.draw();
                     }
-                    r=ra;
+                    r = ra;
                 } else {
                     figure.draw();
                     figure.goDown();
@@ -181,7 +176,7 @@ public class Manager {
         }
     }
     
-    public void begin(JButton[][] matrix, JPanel tabla){
+    public void begin(JButton[][] matrix, JPanel table){
         step.cancel();
         //Tablero.removeAll();
         //cont = 0;
@@ -189,7 +184,7 @@ public class Manager {
         figure = new L(matrix);
         figure.goDown();
         
-        Table ta = new Table(matrix,tabla);
+        Table ta = new Table(matrix,table);
         //int r = (int) (random1.nextFloat() * 6);
         step = new Timer();
 
@@ -211,13 +206,13 @@ public class Manager {
                 }
 
                 for (int y = 0; y < dimy; y++) {
-                    boolean completo = true;
+                    boolean isComplete = true;
                     for (int x = 0; x < dimx; x++) {
                         if (matrix[x][y].getBackground().equals(new Color(240, 240, 240))) {
-                            completo = false;
+                            isComplete = false;
                         }
                     }
-                    if (completo) {
+                    if (isComplete) {
                         for (int z = y; z > 0; z--) {
                             for (int j = 0; j < dimx; j++) {
                                 matrix[j][z].setBackground(matrix[j][z - 1].getBackground());
@@ -234,7 +229,7 @@ public class Manager {
                 if (figure.isStopped) {
                     //System.out.println(r+ " -- "+one);
                     int ra = (int) (random1.nextFloat() * 6);
-                    tabla.removeAll();
+                    table.removeAll();
                     ta.draw(ra);
                     if (r == 0) {
                         //tabla.removeAll();

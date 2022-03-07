@@ -12,9 +12,9 @@ public class Table {
     int dimx = 10;
     int dimy = 20;
     
-    public Table(JButton[][] matrix, JPanel tabla) {
+    public Table(JButton[][] matrix, JPanel table) {
         this.matrix = matrix;
-        this.table = tabla;
+        this.table = table;
     }
     
     public void draw(int r){
@@ -27,6 +27,8 @@ public class Table {
         switch(r){
             case 0://I
                 table.removeAll();
+                table.setEnabled(false);
+                table.setEnabled(true);
                 b.setBounds(5, 5, 30, 30);
                 b.setBackground(Color.red);
                 table.add(b);
@@ -42,6 +44,8 @@ public class Table {
                 break;
             case 1://0
                 table.removeAll();
+                table.setEnabled(false);
+                table.setEnabled(true);
                 b.setBounds(5, 5, 30, 30);
                 b.setBackground(Color.BLUE);
                 table.add(b);
@@ -57,6 +61,8 @@ public class Table {
                 break;
             case 2://Z
                 table.removeAll();
+                table.setEnabled(false);
+                table.setEnabled(true);
                 b.setBounds(5, 5, 30, 30);
                 b.setBackground(Color.cyan);
                 table.add(b);
@@ -72,6 +78,8 @@ public class Table {
                 break;
             case 3://L
                 table.removeAll();
+                table.setEnabled(false);
+                table.setEnabled(true);
                 b.setBounds(5, 5, 30, 30);
                 b.setBackground(Color.YELLOW);
                 table.add(b);
@@ -87,6 +95,8 @@ public class Table {
                 break;
             case 4://T
                 table.removeAll();
+                table.setEnabled(false);
+                table.setEnabled(true);
                 b.setBounds(5, 5, 30, 30);
                 b.setBackground(Color.GREEN);
                 table.add(b);
@@ -102,6 +112,8 @@ public class Table {
                 break;
             case 5://S
                 table.removeAll();
+                table.setEnabled(false);
+                table.setEnabled(true);
                 b.setBounds(30, 5, 30, 30);
                 b.setBackground(Color.MAGENTA);
                 table.add(b);

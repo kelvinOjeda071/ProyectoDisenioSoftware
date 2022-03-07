@@ -139,6 +139,7 @@ public class Tetris extends javax.swing.JFrame {
         //paso.cancel();
         board.removeAll();
         table1.removeAll();
+        
         //cont = 0;
         
         Board newBoard = new Board(matrixes, board);
