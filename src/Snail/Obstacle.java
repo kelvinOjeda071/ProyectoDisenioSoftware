@@ -4,6 +4,7 @@ package Snail;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,32 +18,40 @@ import java.awt.event.KeyEvent;
  */
 public class Obstacle extends GameElement {
     private int tipoObstaculo;
+    private final ImageIcon imagen;
 
-    public Obstacle(int tipoObstaculo, Position posicion, int ancho, int largo) {
-        super(posicion, ancho, largo);
+    public Obstacle(int tipoObstaculo, Position posicion, int height, int width) {
+        super(posicion, height, width, 1);
         this.tipoObstaculo = tipoObstaculo;
+        this.imagen = new ImageIcon(getClass().getResource("/Imagenes/plataforma.png"));
     }
 
     
 
     @Override
-    public void draw(Graphics grafico, int ancho, int largo) {
+    public void draw(Graphics grafico, int height, int width) {
         
-        ancho = this.width;
-        largo = this.height;
+        height = this.height;
+        width = this.width;
         int posicionX = this.position.getX();
         int posicionY = this.position.getY();
+        height = this.height;
+        width = this.width;
+        
+        grafico.setColor(Color.red);
+        
         
         if(tipoObstaculo == 0){ //Plataforma
             grafico.setColor(Color.black);
-            grafico.fillRect(posicionX, posicionY, ancho, largo);
+            grafico.drawImage(this.imagen.getImage(), posicionX, posicionY, width, height, null);
+            //grafico.fillRect(posicionX, posicionY, width, height);
             
             
         }
         
         if(tipoObstaculo == 1){ //Cajas
             grafico.setColor(Color.red);
-            grafico.drawLine(posicionX, posicionY, ancho, largo);
+            grafico.fillRect(posicionX, posicionY, width, height);
         }
     }
 
