@@ -9,7 +9,7 @@ public class Table {
 
     JButton[][] matrix;
     JPanel table;
-    int ran;
+    int random;
     int dimx = 10;
     int dimy = 20;
 
