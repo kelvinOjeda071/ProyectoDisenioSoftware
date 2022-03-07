@@ -28,9 +28,9 @@ public class Tetris extends javax.swing.JFrame {
 
     Manager manager= new Manager();
     public Tetris() {
-        //jLScore.setText(String.valueOf(0.0));
-        initComponents();
         
+        initComponents();
+        this.setLocationRelativeTo(null);
         Board newBoard = new Board(matrixes, board);
         JButton[][] matrix = newBoard.draw();
         
