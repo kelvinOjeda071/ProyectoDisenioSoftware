@@ -11,7 +11,7 @@ public abstract class Entity extends Thread {
     Crash crash;
     Snake snake;
     Enemy enemy;
-    int size = 10;
+    int size = 10; // entity size
     int speed = 10;
     Color color = Color.BLUE;
     static final Random r = new Random();
@@ -21,6 +21,7 @@ public abstract class Entity extends Thread {
 
     public abstract void drop();
 
+    //n= entity head
     public void eatFood(Point n) {
         Iterator<Point> i = board.food.food.iterator();
         while (i.hasNext()) {
@@ -38,7 +39,8 @@ public abstract class Entity extends Thread {
     public int score() {
         return count;
     }
-
+    
+    //Calculate direction betwen 2 points
     public Point calculateCoord(Point last, Point mouse) {
         double degree = 0;
         if (last.x < mouse.x && last.y < mouse.y) {

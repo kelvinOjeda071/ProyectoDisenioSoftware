@@ -6,14 +6,12 @@ import java.awt.Point;
 import java.awt.PointerInfo;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Random;
-import static javafx.scene.paint.Color.color;
+
 
 public class Snake extends Entity {
 
     ArrayList<Point> snake;
-
+    
     PointerInfo a = MouseInfo.getPointerInfo();
     int count = 0;
 
@@ -22,7 +20,7 @@ public class Snake extends Entity {
         crash = new Crash();
         while (true) {
             try {
-                Thread.sleep(50);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
