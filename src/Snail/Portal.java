@@ -14,21 +14,21 @@ import java.awt.event.KeyEvent;
  *
  * @author User
  */
-public class Portal extends ElementoDeJuego {
+public class Portal extends GameElement {
     private String tipo;
 
-    public Portal(String tipo, Posicion posicion, int ancho, int largo) {
+    public Portal(String tipo, Position posicion, int ancho, int largo) {
         super(posicion, ancho, largo);
         this.tipo = tipo;
     }
 
 
     @Override
-    public void dibujar(Graphics grafico, int ancho, int largo) {
+    public void draw(Graphics grafico, int ancho, int largo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void mover() {
+    public void move() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

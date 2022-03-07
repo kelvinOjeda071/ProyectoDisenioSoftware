@@ -14,9 +14,9 @@ import java.awt.event.KeyEvent;
  *
  * @author User
  */
-public class Enemigo extends ElementoDeJuego {
+public class Enemigo extends GameElement {
 
-    public Enemigo(Posicion posicion, int ancho, int largo) {
+    public Enemigo(Position posicion, int ancho, int largo) {
         super(posicion, ancho, largo);
     }
     
@@ -25,12 +25,12 @@ public class Enemigo extends ElementoDeJuego {
     }
 
     @Override
-    public void dibujar(Graphics grafico, int ancho, int largo) {
+    public void draw(Graphics grafico, int ancho, int largo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void mover() {
+    public void move() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

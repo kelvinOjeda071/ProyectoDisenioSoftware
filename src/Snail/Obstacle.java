@@ -15,10 +15,10 @@ import java.awt.event.KeyEvent;
  *
  * @author User
  */
-public class Obstaculo extends ElementoDeJuego {
+public class Obstacle extends GameElement {
     private int tipoObstaculo;
 
-    public Obstaculo(int tipoObstaculo, Posicion posicion, int ancho, int largo) {
+    public Obstacle(int tipoObstaculo, Position posicion, int ancho, int largo) {
         super(posicion, ancho, largo);
         this.tipoObstaculo = tipoObstaculo;
     }
@@ -26,12 +26,12 @@ public class Obstaculo extends ElementoDeJuego {
     
 
     @Override
-    public void dibujar(Graphics grafico, int ancho, int largo) {
+    public void draw(Graphics grafico, int ancho, int largo) {
         
-        ancho = this.ancho;
-        largo = this.largo;
-        int posicionX = this.posicion.getX();
-        int posicionY = this.posicion.getY();
+        ancho = this.width;
+        largo = this.height;
+        int posicionX = this.position.getX();
+        int posicionY = this.position.getY();
         
         if(tipoObstaculo == 0){ //Plataforma
             grafico.setColor(Color.black);
@@ -47,7 +47,7 @@ public class Obstaculo extends ElementoDeJuego {
     }
 
     @Override
-    public void mover() {
+    public void move() {
         //System.out.print("Moviendo\n");
     }
 

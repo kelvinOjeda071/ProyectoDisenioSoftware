@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
  *
  * @author User
  */
-public class Caracol extends ElementoDeJuego {
+public class Caracol extends GameElement {
 
     private final ImageIcon imagen;
     int xFinal = 1;
@@ -48,19 +48,19 @@ public class Caracol extends ElementoDeJuego {
     
 
     
-    public Caracol(Posicion posicion, int ancho, int largo) throws IOException {
+    public Caracol(Position posicion, int ancho, int largo) throws IOException {
         super(posicion, ancho, largo);
-        this.posicion.x = 1;
-        this.posicion.y=1;
+        this.position.x = 1;
+        this.position.y=1;
         this.imagen = new ImageIcon(getClass().getResource("/Snail/Imagenes/caracol.png"));
     }
     
     @Override
-    public void dibujar(Graphics grafico, int ancho, int largo) {
-        ancho = this.ancho;
-        largo = this.largo;
-        int posicionX = this.posicion.getX();
-        int posicionY = this.posicion.getY();
+    public void draw(Graphics grafico, int ancho, int largo) {
+        ancho = this.width;
+        largo = this.height;
+        int posicionX = this.position.getX();
+        int posicionY = this.position.getY();
         grafico.setColor(Color.red);
         grafico.drawImage(this.imagen.getImage(), posicionX, posicionY, ancho, largo, null);
         
@@ -75,17 +75,17 @@ public class Caracol extends ElementoDeJuego {
     }
 
     @Override
-    public void mover() {
+    public void move() {
                    
-        int x0 = this.posicion.getX();
-        int y0 = this.posicion.getY();
+        int x0 = this.position.getX();
+        int y0 = this.position.getY();
         
         if ((x0 + this.xFinal > 0) && (x0 + this.xFinal < 600)){
-            this.posicion.setX(x0 + this.xFinal); 
+            this.position.setX(x0 + this.xFinal); 
         }
         
         if((y0 + this.yFinal > 0) && (y0 + this.yFinal < 500)){
-            this.posicion.setY(y0 + this.yFinal);
+            this.position.setY(y0 + this.yFinal);
         }
    
     }

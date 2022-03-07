@@ -17,32 +17,32 @@ import java.util.LinkedList;
  */
 public class ListaElementos {
     
-    private LinkedList <ElementoDeJuego> lista;
-    //private ElementoDeJuego elemento;
+    private LinkedList <GameElement> lista;
+    //private GameElement elemento;
 
     public ListaElementos() {
-        lista = new LinkedList<ElementoDeJuego>();
+        lista = new LinkedList<GameElement>();
     }
 
-    public LinkedList<ElementoDeJuego> getLista() {
+    public LinkedList<GameElement> getLista() {
         return lista;
     }
     
   
 
-    public void setLista(LinkedList<ElementoDeJuego> lista) {
+    public void setLista(LinkedList<GameElement> lista) {
         this.lista = lista;
     }
     
-    public void agregarElemento (ElementoDeJuego elemento){
+    public void agregarElemento (GameElement elemento){
         //this.elemento = elemento;
         lista.add(elemento);
     }
      
-    public void eliminarElemento(Posicion posicion){
-        Iterator <ElementoDeJuego> it = getLista().iterator();
+    public void eliminarElemento(Position posicion){
+        Iterator <GameElement> it = getLista().iterator();
         while(it.hasNext()){
-            Posicion pos = it.next().getPosicion();
+            Position pos = it.next().getPosition();
             if((pos.getX() == posicion.getX()) && (pos.getY() == posicion.getY())){
                 it.remove();
             }

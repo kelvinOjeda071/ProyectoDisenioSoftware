@@ -37,10 +37,10 @@ public class Nivel extends JPanel {
     }
     
     void actualizar(){
-       ElementoDeJuego elemento;
+       GameElement elemento;
         for(int i = 0; i<lista.getLista().size(); i++){
             elemento =lista.getLista().get(i);
-            elemento.mover();
+            elemento.move();
             
             //elemento = null;
         }
@@ -48,10 +48,10 @@ public class Nivel extends JPanel {
 
     public void paint(Graphics g) {
         super.paint(g);
-        ElementoDeJuego elemento;
+        GameElement elemento;
         for(int i = 0; i<lista.getLista().size(); i++){
             elemento =lista.getLista().get(i);
-            elemento.dibujar(g, elemento.getAncho(), elemento.getLargo());
+            elemento.draw(g, elemento.getWidth(), elemento.getHeight());
             elemento = null;
         }
     }

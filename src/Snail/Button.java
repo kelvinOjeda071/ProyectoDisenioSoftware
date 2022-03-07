@@ -1,6 +1,7 @@
 package Snail;
 
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
@@ -14,11 +15,11 @@ import java.awt.event.KeyEvent;
  *
  * @author User
  */
-public class Boton extends ElementoDeJuego {
+public class Button extends GameElement {
     
-    private Obstaculo obstaculo;
+    private Obstacle obstaculo;
 
-    public Boton(Posicion posicion, int ancho, int largo) {
+    public Button(Position posicion, int ancho, int largo) {
         super(posicion, ancho, largo);
     }
     
@@ -32,18 +33,20 @@ public class Boton extends ElementoDeJuego {
 
 
     @Override
-    public void dibujar(Graphics grafico, int ancho, int largo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void draw(Graphics grafico, int ancho, int largo) {
+        height = this.height;
+        width = this.width;
+        int posicionX = this.position.getX();
+        int posicionY = this.position.getY();
+        height = this.height;
+        width = this.width;
+        grafico.setColor(Color.red);
+        grafico.setColor(Color.red);
+        grafico.fillRect(posicionX, posicionY, width, height);
     }
 
-    public void mover() {
+    public void move() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    public void mover(int xFinal, int yFinal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-  
 
 }

@@ -50,15 +50,15 @@ public class SnailGame extends JFrame{
     }
 
     public void iniciarJuego() throws InterruptedException, IOException{
-        Posicion posicionCaracol = new Posicion(1, 1);
-        Posicion posicionPlataforma1 = new Posicion(0, 150);
-        Posicion posicionPlataforma2 = new Posicion(500, 300);
+        Position posicionCaracol = new Position(1, 1);
+        Position posicionPlataforma1 = new Position(0, 150);
+        Position posicionPlataforma2 = new Position(500, 300);
 
         this.setTitle("Snail");
        
         Caracol caracol = new Caracol(posicionCaracol, 100, 100 );
-        Obstaculo plataforma1 = new Obstaculo(0, posicionPlataforma1, 400, 50);
-        Obstaculo plataforma2 = new Obstaculo(0, posicionPlataforma2, 300, 50);
+        Obstacle plataforma1 = new Obstacle(0, posicionPlataforma1, 400, 50);
+        Obstacle plataforma2 = new Obstacle(0, posicionPlataforma2, 300, 50);
 
         
         ListaElementos lista = new ListaElementos();

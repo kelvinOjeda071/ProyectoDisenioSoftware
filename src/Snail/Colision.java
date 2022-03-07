@@ -19,22 +19,22 @@ public class Colision {
     
 
     public boolean verificarColision(){
-        ElementoDeJuego elemento1;
-        ElementoDeJuego elemento2;
+        GameElement elemento1;
+        GameElement elemento2;
         int x;
         int y;
         int x2;
         int y2;
         for(int i = 0; i<lista.getLista().size(); i++){
             elemento1 =lista.getLista().get(i);
-            x = elemento1.getPosicion().getX();
-            y = elemento1.getPosicion().getY();
+            x = elemento1.getPosition().getX();
+            y = elemento1.getPosition().getY();
             
             for (int j = i+1; j<lista.getLista().size(); j++){
                 elemento2 = lista.getLista().get(j);
                 
-                x2 = elemento2.getPosicion().getX();
-                y2 = elemento2.getPosicion().getY();
+                x2 = elemento2.getPosition().getX();
+                y2 = elemento2.getPosition().getY();
                 
                 if((x == x2) && (y == y2) )
                 {
