@@ -22,7 +22,7 @@ public class SnakeGame {
         
         board.point = point; 
         point.board = board;
-        
+        //K
         point.snake = new ArrayList<>();
         point.foods = new ArrayList<>();
         point.snake.add(new Point(500, 500));
