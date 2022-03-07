@@ -18,19 +18,7 @@ public class Table {
         this.table = table;
     }
 
-    JButton[][] draw() {
-        JButton[][] matrix = new JButton[dimx][dimy];
-        for (int x = 0; x < dimx; x++) {
-            for (int y = 0; y < dimy; y++) {
-                matrix[x][y] = new JButton();
-                matrix[x][y].setBackground(new Color(240, 240, 240));
-                this.table.add(matrix[x][y], new org.netbeans.lib.awtextra.AbsoluteConstraints(x * 30, y * 30, 35, 35));//x * 30, y * 30, 35, 35
-            }
-        }
-        return matrix;
-    }
-
-    public void di(int r) {
+    public void draw(int r) {
         //tabla.remove
         //Graphics  g = new Graphics();
         JButton b = new JButton();

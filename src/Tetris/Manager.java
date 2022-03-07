@@ -99,36 +99,36 @@ public class Manager {
                 //int uno=r;
                 if (figure.isStopped) {
                     if (r == 0) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new I(matrix);
                         figure.draw();
                     }
                     if (r == 1) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new O(matrix);
                         figure.draw();
                     }
                     if (r == 2) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new Z(matrix);
                         figure.draw();
                         
                     }
                     if (r == 3) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new L(matrix);
                         figure.draw();
-                        //ta.di(r);
+                        //ta.draw(r);
                         //figura1 = new L(matrix);
                         //figura1.draw();
                     }
                     if (r == 4) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new T(matrix);
                         figure.draw();
                     }
                     if (r == 5) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new S(matrix);
                         figure.draw();
                     }
@@ -235,33 +235,33 @@ public class Manager {
 
                 if (figure.isStopped) {
                     if (r == 0) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new I(matrix);
                         figure.draw();
                     }
                     if (r == 1) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new O(matrix);
                         figure.draw();
                     }
                     if (r == 2) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new Z(matrix);
                         figure.draw();
                     }
                     if (r == 3) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new L(matrix);
                         figure.draw();
                         
                     }
                     if (r == 4) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new T(matrix);
                         figure.draw();
                     }
                     if (r == 5) {
-                        ta.di(ra);
+                        ta.draw(ra);
                         figure = new S(matrix);
                         figure.draw();
                     }
