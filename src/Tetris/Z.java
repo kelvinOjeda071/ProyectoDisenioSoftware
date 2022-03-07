@@ -32,145 +32,153 @@ public class Z extends Figure {
         b4.setBackground(Color.cyan);
     }
     
-    public void goDown() {
-        if (isStopped) {
-            return;
-        }
+    public void move(int n){
+        switch(n){
+                case 1:
+                    if (isStopped) {
+                        return;
+                    }
 
-        if (y >= dimy - 1) {
-            isStopped = true;
-            return;
-        }
+                    if (y >= dimy - 1) {
+                        isStopped = true;
+                        return;
+                    }
 
-        if (horizontal
-                && (!matrix[x + 1][y + 1].getBackground().equals(new Color(240, 240, 240))
-                || !matrix[x][y].getBackground().equals(new Color(240, 240, 240))
-                || !matrix[x + 2][y + 1].getBackground().equals(new Color(240, 240, 240)))) {
-            isStopped = true;
-            return;
-        }
+                    if (horizontal
+                            && (!matrix[x + 1][y + 1].getBackground().equals(new Color(240, 240, 240))
+                            || !matrix[x][y].getBackground().equals(new Color(240, 240, 240))
+                            || !matrix[x + 2][y + 1].getBackground().equals(new Color(240, 240, 240)))) {
+                        isStopped = true;
+                        return;
+                    }
 
-        if (!horizontal
-                && (!matrix[x + 1][y].getBackground().equals(new Color(240, 240, 240))
-                || !matrix[x][y + 1].getBackground().equals(new Color(240, 240, 240)))) {
-            isStopped = true;
-            return;
-        }
+                    if (!horizontal
+                            && (!matrix[x + 1][y].getBackground().equals(new Color(240, 240, 240))
+                            || !matrix[x][y + 1].getBackground().equals(new Color(240, 240, 240)))) {
+                        isStopped = true;
+                        return;
+                    }
 
-        if (horizontal) {
+                    if (horizontal) {
 
-            b1.setBackground(new Color(240, 240, 240));
-            b2.setBackground(new Color(240, 240, 240));
-            b3.setBackground(new Color(240, 240, 240));
-            b4.setBackground(new Color(240, 240, 240));
-            y++;
-            b1 = matrix[x][y - 1];
-            b2 = matrix[x + 1][y - 1];
-            b3 = matrix[x + 1][y];
-            b4 = matrix[x + 2][y];
-            b1.setBackground(Color.cyan);
-            b2.setBackground(Color.cyan);
-            b3.setBackground(Color.cyan);
-            b4.setBackground(Color.cyan);
-        } else {
-            b1.setBackground(new Color(240, 240, 240));
-            b2.setBackground(new Color(240, 240, 240));
-            b3.setBackground(new Color(240, 240, 240));
-            b4.setBackground(new Color(240, 240, 240));
-            y++;
-            b4 = matrix[x + 1][y - 2];
-            b3 = matrix[x + 1][y - 1];
-            b2 = matrix[x][y - 1];
-            b1 = matrix[x][y];
-            b1.setBackground(Color.cyan);
-            b2.setBackground(Color.cyan);
-            b3.setBackground(Color.cyan);
-            b4.setBackground(Color.cyan);
-        }
-    }
+                        b1.setBackground(new Color(240, 240, 240));
+                        b2.setBackground(new Color(240, 240, 240));
+                        b3.setBackground(new Color(240, 240, 240));
+                        b4.setBackground(new Color(240, 240, 240));
+                        y++;
+                        b1 = matrix[x][y - 1];
+                        b2 = matrix[x + 1][y - 1];
+                        b3 = matrix[x + 1][y];
+                        b4 = matrix[x + 2][y];
+                        b1.setBackground(Color.cyan);
+                        b2.setBackground(Color.cyan);
+                        b3.setBackground(Color.cyan);
+                        b4.setBackground(Color.cyan);
+                    } else {
+                        b1.setBackground(new Color(240, 240, 240));
+                        b2.setBackground(new Color(240, 240, 240));
+                        b3.setBackground(new Color(240, 240, 240));
+                        b4.setBackground(new Color(240, 240, 240));
+                        y++;
+                        b4 = matrix[x + 1][y - 2];
+                        b3 = matrix[x + 1][y - 1];
+                        b2 = matrix[x][y - 1];
+                        b1 = matrix[x][y];
+                        b1.setBackground(Color.cyan);
+                        b2.setBackground(Color.cyan);
+                        b3.setBackground(Color.cyan);
+                        b4.setBackground(Color.cyan);
+                    }
+                break;
+                
+                case 2:
+                    if (isStopped) {
+                        return;
+                    }
+                    if (horizontal && x + 2 >= dimx - 1) {
+                        return;
+                    }
+                    if (!horizontal && x + 1 >= dimx - 1) {
+                        return;
+                    }
+                    if (horizontal) {
+                        b1.setBackground(new Color(240, 240, 240));
+                        b2.setBackground(new Color(240, 240, 240));
+                        b3.setBackground(new Color(240, 240, 240));
+                        b4.setBackground(new Color(240, 240, 240));
+                        x++;
+                        b1 = matrix[x][y - 1];
+                        b2 = matrix[x + 1][y - 1];
+                        b3 = matrix[x + 1][y];
+                        b4 = matrix[x + 2][y];
+                        b1.setBackground(Color.cyan);
+                        b2.setBackground(Color.cyan);
+                        b3.setBackground(Color.cyan);
+                        b4.setBackground(Color.cyan);
+                    } else {
+                        b1.setBackground(new Color(240, 240, 240));
+                        b2.setBackground(new Color(240, 240, 240));
+                        b3.setBackground(new Color(240, 240, 240));
+                        b4.setBackground(new Color(240, 240, 240));
+                        x++;
 
-    public void moveRight() {
-        if (isStopped) {
-            return;
-        }
-        if (horizontal && x + 2 >= dimx - 1) {
-            return;
-        }
-        if (!horizontal && x + 1 >= dimx - 1) {
-            return;
-        }
-        if (horizontal) {
-            b1.setBackground(new Color(240, 240, 240));
-            b2.setBackground(new Color(240, 240, 240));
-            b3.setBackground(new Color(240, 240, 240));
-            b4.setBackground(new Color(240, 240, 240));
-            x++;
-            b1 = matrix[x][y - 1];
-            b2 = matrix[x + 1][y - 1];
-            b3 = matrix[x + 1][y];
-            b4 = matrix[x + 2][y];
-            b1.setBackground(Color.cyan);
-            b2.setBackground(Color.cyan);
-            b3.setBackground(Color.cyan);
-            b4.setBackground(Color.cyan);
-        } else {
-            b1.setBackground(new Color(240, 240, 240));
-            b2.setBackground(new Color(240, 240, 240));
-            b3.setBackground(new Color(240, 240, 240));
-            b4.setBackground(new Color(240, 240, 240));
-            x++;
+                        b4 = matrix[x + 1][y - 2];
+                        b3 = matrix[x + 1][y - 1];
+                        b2 = matrix[x][y - 1];
+                        b1 = matrix[x][y];
+                        b1.setBackground(Color.cyan);
+                        b2.setBackground(Color.cyan);
+                        b3.setBackground(Color.cyan);
+                        b4.setBackground(Color.cyan);
 
-            b4 = matrix[x + 1][y - 2];
-            b3 = matrix[x + 1][y - 1];
-            b2 = matrix[x][y - 1];
-            b1 = matrix[x][y];
-            b1.setBackground(Color.cyan);
-            b2.setBackground(Color.cyan);
-            b3.setBackground(Color.cyan);
-            b4.setBackground(Color.cyan);
+                    }
+                break;
+                
+                case 3:
+                    if (isStopped) {
+                        return;
+                    }
+                    if (x - 1 < 0) {
+                        return;
+                    }
 
-        }
-    }
+                    if (horizontal) {
+                        b1.setBackground(new Color(240, 240, 240));
+                        b2.setBackground(new Color(240, 240, 240));
+                        b3.setBackground(new Color(240, 240, 240));
+                        b4.setBackground(new Color(240, 240, 240));
 
-    public void moveLeft() {
-        if (isStopped) {
-            return;
-        }
-        if (x - 1 < 0) {
-            return;
-        }
+                        x--;
+                        b1 = matrix[x][y - 1];
+                        b2 = matrix[x + 1][y - 1];
+                        b3 = matrix[x + 1][y];
+                        b4 = matrix[x + 2][y];
+                        b1.setBackground(Color.cyan);
+                        b2.setBackground(Color.cyan);
+                        b3.setBackground(Color.cyan);
+                        b4.setBackground(Color.cyan);
+                    } else {
+                        b1.setBackground(new Color(240, 240, 240));
+                        b2.setBackground(new Color(240, 240, 240));
+                        b3.setBackground(new Color(240, 240, 240));
+                        b4.setBackground(new Color(240, 240, 240));
 
-        if (horizontal) {
-            b1.setBackground(new Color(240, 240, 240));
-            b2.setBackground(new Color(240, 240, 240));
-            b3.setBackground(new Color(240, 240, 240));
-            b4.setBackground(new Color(240, 240, 240));
+                        x--;
+                        b4 = matrix[x + 1][y - 2];
+                        b3 = matrix[x + 1][y - 1];
+                        b2 = matrix[x][y - 1];
+                        b1 = matrix[x][y];
+                        b1.setBackground(Color.cyan);
+                        b2.setBackground(Color.cyan);
+                        b3.setBackground(Color.cyan);
+                        b4.setBackground(Color.cyan);
 
-            x--;
-            b1 = matrix[x][y - 1];
-            b2 = matrix[x + 1][y - 1];
-            b3 = matrix[x + 1][y];
-            b4 = matrix[x + 2][y];
-            b1.setBackground(Color.cyan);
-            b2.setBackground(Color.cyan);
-            b3.setBackground(Color.cyan);
-            b4.setBackground(Color.cyan);
-        } else {
-            b1.setBackground(new Color(240, 240, 240));
-            b2.setBackground(new Color(240, 240, 240));
-            b3.setBackground(new Color(240, 240, 240));
-            b4.setBackground(new Color(240, 240, 240));
-
-            x--;
-            b4 = matrix[x + 1][y - 2];
-            b3 = matrix[x + 1][y - 1];
-            b2 = matrix[x][y - 1];
-            b1 = matrix[x][y];
-            b1.setBackground(Color.cyan);
-            b2.setBackground(Color.cyan);
-            b3.setBackground(Color.cyan);
-            b4.setBackground(Color.cyan);
-
+                    }
+                break;
+                
+                default:
+                    
+                break;
         }
     }
 

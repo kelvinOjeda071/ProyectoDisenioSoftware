@@ -13,10 +13,11 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 public class Manager {
+
     //JButton[][] matrixes;
     Timer step;
     TimerTask down;
@@ -27,25 +28,25 @@ public class Manager {
     int dimx = 10;
     int dimy = 20;
     int counter = 0;
-    JPanel table;
-    int one=0;
     int r = (int) (random1.nextFloat() * 6);
+    double score = 0;
+
     //Clip clip;
-    
     Manager() {
         //this.table = table;
     }
-    
-    public void Manager(JButton[][] matrix, JPanel tabla) {
+
+    public void Manager(JButton[][] matrix, JPanel table, JLabel jLScore) {
+        
         figure = new L(matrix);
         figure.draw();
-        figure.goDown();
-        
-        Table ta = new Table(matrix,tabla);
+        figure.move(1);
+
+        Table ta = new Table(matrix, table);
         //int r=(int) (random.nextFloat() * 6);
         //figura1 = new L(matrix1);
         //figura1.dibujar();
-        
+
         step = new Timer();
         down = new TimerTask() {
             @Override
@@ -67,7 +68,7 @@ public class Manager {
                     javax.swing.JOptionPane.showMessageDialog(null, "Has perdido\n"
                             + "Fin.\n", "Fin del juego", javax.swing.JOptionPane.OK_OPTION);
                     step.cancel();
-                    
+
                     counter = 0;
                     return;
                 }
@@ -80,19 +81,20 @@ public class Manager {
                         }
                     }
                     if (isComplete) {
-
+                        score = score + 10;
+                        jLScore.setText(String.valueOf(score));
                         for (int z = y; z > 0; z--) {
                             for (int j = 0; j < dimx; j++) {
                                 matrix[j][z].setBackground(matrix[j][z - 1].getBackground());
+
                             }
                         }
 
                     }
 
                 }
-                
+
                 // Función que genera la siguiente figure al azar
-                
                 if (figure.isStopped) {
                     int ra = (int) (random1.nextFloat() * 6);
                     if (r == 0) {
@@ -128,10 +130,10 @@ public class Manager {
                     r = ra;
                 } else {
                     figure.draw();
-                    figure.goDown();
+                    figure.move(1);
                     counter = 0;
                 }
-                
+
                 // Las celdas del tablero ya no son visibles una vez se rellenan
                 // con un objeto
                 for (int x = 0; x < dimx; x++) {
@@ -148,43 +150,32 @@ public class Manager {
         };
         step.schedule(down, 0, 500);
     }
-    /*public void bajarB(){
-        figure.bajar();
-    }
-    public void moverDerechaB(){
-        figure.moverDerecha();
-    }
-    public void moverIzquierdaB(){
-        figure.moverIzquierda();
-    }
-    public void rotarB(){
-        figure.rotar();
-    }*/
-    
-    public void movementsControl(java.awt.event.KeyEvent evt){
+
+    public void movementsControl(java.awt.event.KeyEvent evt) {
         if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
-            figure.goDown();
+            figure.move(1);
         }
         if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
-            figure.moveRight();
+            figure.move(2);
         }
         if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
-            figure.moveLeft();
+            figure.move(3);
         }
         if (evt.getKeyCode() == KeyEvent.VK_UP) {
             figure.rotate();
         }
     }
-    
-    public void begin(JButton[][] matrix, JPanel table){
-        step.cancel();
+
+    public void start(JButton[][] matrix, JPanel table, JLabel jLScore) {
+        score = 0;
+        jLScore.setText(String.valueOf(score));
         //Tablero.removeAll();
         //cont = 0;
-        
+
         figure = new L(matrix);
-        figure.goDown();
-        
-        Table ta = new Table(matrix,table);
+        figure.move(1);
+
+        Table ta = new Table(matrix, table);
         //int r = (int) (random1.nextFloat() * 6);
         step = new Timer();
 
@@ -213,19 +204,19 @@ public class Manager {
                         }
                     }
                     if (isComplete) {
+                        score = score + 10;
+                        jLScore.setText(String.valueOf(score));
                         for (int z = y; z > 0; z--) {
                             for (int j = 0; j < dimx; j++) {
                                 matrix[j][z].setBackground(matrix[j][z - 1].getBackground());
                             }
                         }
-                        
+
                     }
 
                 }
 
-                
                 //int r = (int) (random1.nextFloat() * 6);
-                
                 if (figure.isStopped) {
                     //System.out.println(r+ " -- "+one);
                     int ra = (int) (random1.nextFloat() * 6);
@@ -254,7 +245,7 @@ public class Manager {
                         //ta.draw(ra);
                         figure = new L(matrix);
                         figure.draw();
-                        
+
                     }
                     if (r == 4) {
                         //tabla.removeAll();
@@ -270,7 +261,7 @@ public class Manager {
                     }
                     r = ra;
                 } else {
-                    figure.goDown();
+                    figure.move(1);
                     figure.draw();
                     counter = 0;
                 }
@@ -288,10 +279,9 @@ public class Manager {
         };
         step.schedule(down, 0, 500);
     }
-    
-    public static void comerzarAccion(JPanel Tablero){
-    
+
+    public static void comerzarAccion(JPanel Tablero) {
+
     }
-    
-   
+
 }

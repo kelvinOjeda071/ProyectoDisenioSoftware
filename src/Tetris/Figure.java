@@ -21,11 +21,7 @@ public abstract class Figure {
     
     public abstract void draw();
 
-    public abstract void goDown();
-
-    public abstract void moveRight();
-
-    public abstract void moveLeft();
+    public abstract void move(int mov);
 
     public abstract void rotate();
 
