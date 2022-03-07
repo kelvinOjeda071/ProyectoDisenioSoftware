@@ -24,7 +24,7 @@ public class Test {
         // TODO code application l
         
         SnailGame juego = new SnailGame(true);
-        juego.iniciarJuego();
+        juego.startGame();
         
         
         /*Posicion posicion = new Posicion(1, 1);
