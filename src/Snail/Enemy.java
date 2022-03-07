@@ -21,12 +21,12 @@ public class Enemy extends GameElement {
 
     private final ImageIcon image;
 
-    public Enemy(Position posicion, int ancho, int largo) throws IOException {
+    public Enemy(Position posicion, int ancho, int largo) {
         super(posicion, ancho, largo, 4);
-        this.image = new ImageIcon(getClass().getResource("/Snail.Imagenes/spider.png"));
+        this.image = new ImageIcon(getClass().getResource("/SnailImagenes/spider.png"));
     }
 
-    public boolean atacarCaracol(Snail snail) {
+    public boolean attackSnail(Snail snail) {
 
         int posYSnail = snail.position.y;
         int posXSnail = snail.position.x;
@@ -45,7 +45,7 @@ public class Enemy extends GameElement {
                 && (posYSnail + heightSnail + speedSnailY > posYEnemy)
                 && (posYSnail + speedSnailY < posYEnemy + heightEnemy)) {
             //this.snail.setPosicionX(posXEnemy - widthSnail );
-            System.out.println("ENTRO PRIMER IF");
+            //System.out.println("ENTRO PRIMER IF");
             return false;
         } else {
             if ((posXSnail + widthSnail + speedSnailX > posXEnemy)
@@ -54,10 +54,10 @@ public class Enemy extends GameElement {
                     && (posYSnail < posYEnemy + heightEnemy)) {
                 //snail.setPosicionY(posYEnemy - heightSnail );
                 //snail.setSpeedX(speedSnailY=0);
-                System.out.println("ENTRO SEGUNDO IF");
+                //System.out.println("ENTRO SEGUNDO IF");
                 return false;
             } else {
-                System.out.println("NO ENTRO A NINGUN IF");
+                //System.out.println("NO ENTRO A NINGUN IF");
                 return true;
             }
 
@@ -92,10 +92,10 @@ public class Enemy extends GameElement {
         int x0 = this.position.getX();
         int y0 = this.position.getY();
 
-        if ((y0 >= 0) && (y0 < 200)) {
+        if ((y0 >= 0) && (y0 < 300)) {
             this.position.setY(y0 + 1);
         }
-        if (y0 == 200) {
+        if (y0 == 300) {
             for (int i = 0; i < 200; i++) {
                 this.position.setY(200 - i);
             }

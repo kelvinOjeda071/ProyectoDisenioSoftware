@@ -29,14 +29,14 @@ public class Snail extends GameElement {
     public int speedY;
     private int tipo;
 
-    public Snail(Position posicion, int height, int width) throws IOException {
+    public Snail(Position posicion, int height, int width) {
         super(posicion, height, width, 0);
         ///super.position.x = 1;
         //super.position.y = 1;
         //this.position.y = 1;
         //this.position.x = 1;
         //this.speedX = 2;
-        this.imagen = new ImageIcon(getClass().getResource("/Snail.Imagenes/caracol.png"));
+        this.imagen = new ImageIcon(getClass().getResource("/SnailImagenes/caracol.png"));
     }
 
     public void setSpeedX(int speedX) {

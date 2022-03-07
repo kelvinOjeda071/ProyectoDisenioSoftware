@@ -24,7 +24,7 @@ public class Button extends GameElement {
         this.obstacle = obstacle;
     }
     
-    public void activar(Snail snail){
+    public void activate(Snail snail){
         int posYSnail = snail.position.y;
         int posXSnail = snail.position.x;
         int heightSnail = snail.height;
@@ -42,7 +42,7 @@ public class Button extends GameElement {
                 && (posYSnail + heightSnail + speedSnailY > posYEnemy)
                 && (posYSnail + speedSnailY < posYEnemy + heightEnemy)) {
             //this.snail.setPosicionX(posXEnemy - widthSnail );
-            System.out.println("ENTRO PRIMER IF");
+            //System.out.println("ENTRO PRIMER IF");
             this.obstacle.open();
         } else {
             if ((posXSnail + widthSnail + speedSnailX > posXEnemy)
@@ -51,10 +51,10 @@ public class Button extends GameElement {
                     && (posYSnail < posYEnemy + heightEnemy)) {
                 //snail.setPosicionY(posYEnemy - heightSnail );
                 //snail.setSpeedX(speedSnailY=0);
-                System.out.println("ENTRO SEGUNDO IF");
+                //System.out.println("ENTRO SEGUNDO IF");
                 this.obstacle.open();
             } else {
-                System.out.println("NO ENTRO A NINGUN IF");
+                //System.out.println("NO ENTRO A NINGUN IF");
             }
 
         }
@@ -62,7 +62,7 @@ public class Button extends GameElement {
         
     }
     
-    private void desactivar(){
+    private void desactivate(){
         
     }
 
@@ -81,7 +81,7 @@ public class Button extends GameElement {
     }
 
     public void move() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 }

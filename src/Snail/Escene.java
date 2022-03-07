@@ -45,7 +45,7 @@ public class Escene extends JPanel {
 
     }
 
-    void actualizar() {
+    void update() {
         GameElement elemento;
         for (int i = 0; i < list.getLista().size(); i++) {
             elemento = list.getLista().get(i);
@@ -56,7 +56,7 @@ public class Escene extends JPanel {
 
     public void paint(Graphics g) {
         super.paint(g);
-        image = new ImageIcon(getClass().getResource("/Snail.Imagenes/background.jpg")).getImage();
+        image = new ImageIcon(getClass().getResource("/SnailImagenes/background.jpg")).getImage();
         g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);
         GameElement elemento;

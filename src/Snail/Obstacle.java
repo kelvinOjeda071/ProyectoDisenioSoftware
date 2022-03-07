@@ -23,7 +23,7 @@ public class Obstacle extends GameElement {
     public Obstacle(int tipoObstaculo, Position posicion, int height, int width) {
         super(posicion, height, width, 1);
         this.tipoObstaculo = tipoObstaculo;
-        this.imagen = new ImageIcon(getClass().getResource("/Snail.Imagenes/plataforma.png"));
+        this.imagen = new ImageIcon(getClass().getResource("/SnailImagenes/plataforma.png"));
     }
 
     

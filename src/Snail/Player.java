@@ -19,7 +19,7 @@ public class Player {
         this.puntaje = puntaje;
     }
     
-    public void renovarPuntaje(String nombre, int newPuntaje){
+    public void updateScore(String nombre, int newPuntaje){
         this.nombre = nombre;
         this.puntaje = newPuntaje;
     }

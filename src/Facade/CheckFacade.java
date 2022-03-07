@@ -120,11 +120,8 @@ public class CheckFacade extends javax.swing.JFrame {
     }//GEN-LAST:event_jBSnakeGameActionPerformed
 
     private void jBSnailGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSnailGameActionPerformed
-        
-       snailGame= new SnailGame(true);
-        
         try {
-            snailGame.iniciarJuego();
+            snailGame = new SnailGame();
         } catch (InterruptedException ex) {
             Logger.getLogger(CheckFacade.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

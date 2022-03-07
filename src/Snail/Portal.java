@@ -24,7 +24,7 @@ public class Portal extends GameElement {
 
     public Portal(Position posicion, int ancho, int largo) {
         super(posicion, ancho, largo, 5);
-        this.imagen = new ImageIcon(getClass().getResource("/Snail.Imagenes/portal.png"));
+        this.imagen = new ImageIcon(getClass().getResource("/SnailImagenes/portal.png"));
 
     }
 
@@ -40,7 +40,7 @@ public class Portal extends GameElement {
     }
 
     public void move() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     public boolean notifyEnd(Snail snail) {
@@ -62,7 +62,7 @@ public class Portal extends GameElement {
                 && (posYSnail + heightSnail + speedSnailY > posYPortal)
                 && (posYSnail + speedSnailY < posYPortal + heightPortal)) {
             //this.snail.setPosicionX(posXPortal - widthSnail );
-            System.out.println("ENTRO PRIMER IF");
+            //System.out.println("ENTRO PRIMER IF");
             return false;
         } else {
             if ((posXSnail + widthSnail + speedSnailX > posXPortal)
@@ -71,10 +71,10 @@ public class Portal extends GameElement {
                     && (posYSnail < posYPortal + heightPortal)) {
                 //snail.setPosicionY(posYPortal - heightSnail );
                 //snail.setSpeedX(speedSnailY=0);
-                System.out.println("ENTRO SEGUNDO IF");
+                //System.out.println("ENTRO SEGUNDO IF");
                 return false;
             } else {
-                System.out.println("NO ENTRO A NINGUN IF");
+                //System.out.println("NO ENTRO A NINGUN IF");
                 return true;
             }
 
