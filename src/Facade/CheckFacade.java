@@ -23,7 +23,7 @@ public class CheckFacade extends javax.swing.JFrame {
      */
     private AsteroidGame asteroidGame;
     private SnailGame snailGame;
-    private SnakeGame snakeGame;
+    private SnakeGame c;
     private Tetris tetris;
     public CheckFacade() {
         initComponents();
@@ -112,11 +112,13 @@ public class CheckFacade extends javax.swing.JFrame {
     private void jBAsteroidGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAsteroidGameActionPerformed
         asteroidGame= new AsteroidGame();
         asteroidGame.showWindow();
+        this.setVisible(false);
     }//GEN-LAST:event_jBAsteroidGameActionPerformed
 
     private void jBSnakeGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSnakeGameActionPerformed
-        snakeGame= new SnakeGame();
-        snakeGame.startGame();
+        c = new SnakeGame();
+        c.startGame();
+        this.setVisible(false);
     }//GEN-LAST:event_jBSnakeGameActionPerformed
 
     private void jBSnailGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSnailGameActionPerformed

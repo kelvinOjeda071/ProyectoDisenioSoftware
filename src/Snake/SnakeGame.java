@@ -1,41 +1,54 @@
 package Snake;
 
 
-import Snake.Board;
-import java.awt.Image;
-import java.awt.MouseInfo;
+import static Snake.Snake.r;
 import java.awt.Point;
-import java.awt.PointerInfo;
 import java.util.ArrayList;
-import java.util.Random;
-
 
 public class SnakeGame {
     Board board;
-    Pointer point;
-    Random r;
+    Snake snake; 
+    Food food;
+    Enemy enemy;
+    Entity entity;
     public void startGame(){
-        
-        point = new Pointer();    
-        r = new Random();
-        board = new Board("slitherio");
-        
-        board.point = point; 
-        point.board = board;
-        //K
-        point.snake = new ArrayList<>();
-        point.foods = new ArrayList<>();
-        point.snake.add(new Point(500, 500));
+        snake = new Snake();    
+        board = new Board("Slither.io");
+        food = new Food();
+        enemy = new Enemy();
 
-        point.start();
+        board.snake = snake; 
+        snake.board = board;
+        
+        board.food = food; 
+        
+        board.enemy = enemy;
+        enemy.board = board;
+        
+        snake.snake = new ArrayList<>();
+        enemy.enemy = new ArrayList<>();
+        food.food = new ArrayList<>();
+        
+        snake.snake.add(new Point(500, 500));
+        enemy.enemy.add(new Point(r.nextInt(900), r.nextInt(900)));
+
+        snake.start();
+        food.start();
+        enemy.start();
+        //finishGame();
+        while(true){
+             getScore();
+        }
+       
     }
     
-    public void obtenerPuntaje(){
-        System.out.println("Puntaje por comida" + point.count);
+    public void getScore(){
+        System.out.println("Puntaje por comida" + snake.score());
     }
     
-    public void finishGame(){
+    /*
+    public void finishGame()
         board.controlSize();
-    }
+    }*/
     
 }
