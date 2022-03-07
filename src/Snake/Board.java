@@ -18,7 +18,7 @@ import javax.swing.JFrame;
 public class Board extends JFrame{
     Pointer point;
     Image OSC;
-
+//Kevin****
         public Board(String s){
             super(s);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
